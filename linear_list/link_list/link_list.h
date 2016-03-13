@@ -22,15 +22,22 @@ typedef int elem_type;
 typedef int status;
 typedef int boolean;
 
-typedef struct list_node{
+typedef struct node {
 	elem_type data;
-	struct list_node *next;
-} list_node;
+	struct node *next;
+} node, *p_node;
 
-typedef list_node *link_list;
+typedef struct link_list{
+	p_node head;
+	p_node tail;
+	size_t size;
+} link_list; 
 
-status init_list(link_list *head);
-status create_list(link_list *head);
-
+status init_list(link_list *list);
+status push_back(link_list *list, elem_type item);
+status show_list(link_list *list);
+status push_front(link_list *list, elem_type item);
+status pop_back(link_list *list);
+status pop_front(link_list *list);
 
 #endif 

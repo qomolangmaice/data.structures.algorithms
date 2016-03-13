@@ -13,5 +13,5 @@ debug:
 merge:
 	$(CC) -o merge merge_list.c
 
-count_line:
+count:
 	find . -type f -name "*.[c|h]" -exec cat {} \; | wc -l

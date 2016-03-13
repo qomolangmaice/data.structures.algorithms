@@ -6,42 +6,84 @@
 * Created: 2016.03.10 21:42:35
 */
 
-status init_list(link_list *head)
+status init_list(link_list *list)
 {
-	*head = NULL;
+	list->head = list->tail = (node *)malloc(sizeof(node));	
+	assert(list->head != NULL);
+	list->tail->next = NULL;
+	list->size = 0;
 	return OK;
 }
 
-status create_list(link_list *head)
+status push_back(link_list *list, elem_type item)
 {
-	/* create the head joint in link_list and initialize it */
-	*head = (list_node *)malloc(sizeof(list_node));
-	(*head)->data = 1;
-	(*head)->next = NULL;
+	node *s = (node *)malloc(sizeof(node));
+	assert(s != NULL);
+	s->data = item;
+	s->next = NULL;
 
-	list_node *p = *head;
-	for (int i=2; i<10; ++i)
-	{
-		/* create the next link_list joint and initialize it */
-		list_node *s = (list_node *)malloc(sizeof(list_node));
-		assert(s != NULL);
-		s->data = i;
-		s->next = NULL;
-
-		p->next = s;
-		p = s;
-	}
+	list->tail->next = s;
+	list->tail = s;
+	list->size++;
 	return OK;
 }
 
-status show_list(link_list head)
+status show_list(link_list *list)
 {
-	list_node *p = head;
+	node *p = list->head->next;
 	while(p != NULL)
 	{
 		printf("%d-->", p->data);
 		p = p->next;
 	}
-	printf("Nil.\n");
+	printf("Null.\n");
 	return OK;
 }
+
+status push_front(link_list *list, elem_type item)
+{
+	node *s = (node *)malloc(sizeof(node));
+	assert(s != NULL);
+	s->data = item;
+
+	s->next = list->head->next;
+	list->head->next = s;
+	if(list->size == 0)
+	{
+		list->tail = s;
+	}
+	list->size++;
+	return OK;
+}
+
+status pop_back(link_list *list)
+{
+	if(list->size == 0)
+		return ERROR;
+
+	node *p = list->head;
+	/* 删除尾节点之前，先从头开始一步一步地查找到尾节点的前一节点. */
+	while(p->next != list->tail)
+		p = p->next;
+
+	free(list->tail);
+	list->tail = p;
+	list->tail->next = NULL;
+	list->size--;
+	return OK;
+}
+
+status pop_front(link_list *list)
+{
+	if(list->size == 0)
+		return ERROR;
+
+	node *p = list->head->next;
+	list->head->next = p->next;
+	free(p);
+	if(list->size == 1)
+		list->tail = list->head;
+	list->size--;
+	return OK;
+}
+
