@@ -87,3 +87,67 @@ status pop_front(link_list *list)
 	return OK;
 }
 
+/* insert_val函数的操作前提是单链表中的数据是升序的 */
+status insert_val(link_list *list, elem_type val)
+{
+	node *s = (node *)malloc(sizeof(node));
+	assert(s != NULL);
+	s->data = val;
+	s->next = NULL;
+
+	node *p = list->head;
+	while(p->next != NULL && p->next->data < val)
+		p = p->next;
+
+	if(p->next == NULL)
+		list->tail = s;
+
+	s->next = p->next;
+	p->next = s;
+	list->size++;
+	return OK;
+}
+
+node* find(link_list *list, elem_type key)
+{
+	node *p = list->head->next;
+	while(p != NULL && p->data != key)
+	{
+		p = p->next;
+	}
+	return p;
+}
+
+int get_length(link_list *list)
+{
+	return list->size;
+}
+
+status delete_val(link_list *list, elem_type key)
+{
+	if(list->size == 0)
+		return ERROR;
+
+	node *p = find(list, key);
+	if(p == NULL)
+		printf("要删除的数据不存在.\n");
+
+	if(p = list->tail)
+	{
+		pop_back(list);
+	}
+	else
+	{
+		node *q = p->next;
+		p->data = q->data;
+		p->next = q->next;
+		free(q);
+	}
+	list->size--;
+	return OK;
+}
+
+
+
+
+

@@ -39,5 +39,9 @@ status show_list(link_list *list);
 status push_front(link_list *list, elem_type item);
 status pop_back(link_list *list);
 status pop_front(link_list *list);
+status insert_val(link_list *liste, elem_type val);
+node* find(link_list *list, elem_type key);
+int get_length(link_list *list);
+status delete_val(link_list *list, elem_type key);
 
 #endif 
