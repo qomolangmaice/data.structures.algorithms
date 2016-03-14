@@ -112,9 +112,7 @@ node* find(link_list *list, elem_type key)
 {
 	node *p = list->head->next;
 	while(p != NULL && p->data != key)
-	{
 		p = p->next;
-	}
 	return p;
 }
 
@@ -130,9 +128,12 @@ status delete_val(link_list *list, elem_type key)
 
 	node *p = find(list, key);
 	if(p == NULL)
+	{
 		printf("要删除的数据不存在.\n");
+		return ERROR;
+	}
 
-	if(p = list->tail)
+	if(p == list->tail)
 	{
 		pop_back(list);
 	}
@@ -142,8 +143,8 @@ status delete_val(link_list *list, elem_type key)
 		p->data = q->data;
 		p->next = q->next;
 		free(q);
+	 	list->size--;
 	}
-	list->size--;
 	return OK;
 }
 
