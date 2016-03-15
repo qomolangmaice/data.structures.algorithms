@@ -43,5 +43,9 @@ status insert_val(link_list *liste, elem_type val);
 node* find(link_list *list, elem_type key);
 int get_length(link_list *list);
 status delete_val(link_list *list, elem_type key);
+status sort(link_list *list);
+status resver(link_list *list);
+status clear(link_list *list);
+status destroy(link_list *list);
 
 #endif 

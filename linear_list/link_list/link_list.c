@@ -148,6 +148,90 @@ status delete_val(link_list *list, elem_type key)
 	return OK;
 }
 
+status sort(link_list *list)
+{
+	/*
+	 * 排序的中心思想：将链表断成两部分，再将后面的链表数据进行插值插入到前面的链表中。
+	 */
+	if(list->size == 0 || list->size == 1)
+		return ERROR;
+
+	node *s = list->head->next;
+	node *q = s->next;
+
+	list->tail = s;
+	list->tail->next = NULL;
+
+	while(q != NULL)
+	{
+		s = q;
+		q = q->next;
+
+		node *p = list->head;
+		while(p->next != NULL && p->next->data < s->data)
+			p = p->next;
+
+		if(p->next == NULL)
+			list->tail = s;
+
+		s->next = p->next;
+		p->next = s;
+	}
+	return OK;
+}
+
+status resver(link_list *list)
+{
+	if(list->size == 0 || list->size == 1)
+		return ERROR;
+
+	node *p = list->head->next;
+	node *q = p->next;
+
+	list->tail = p;
+	list->tail->next = NULL;
+
+	while(q != NULL)
+	{
+		p = q;
+		q = p->next;
+
+		p->next = list->head->next;
+		list->head->next = p;
+	}
+	return OK;
+}
+
+status clear(link_list *list)
+{
+	if(list->size == 0)
+		return ERROR;
+
+	node *p = list->head->next;
+	while(p != NULL)
+	{
+		list->head->next = p->next;
+		free(p);
+		p = list->head->next;
+	}
+	list->tail = list->head;
+	list->size = 0;
+	return OK;
+}
+
+status destroy(link_list *list)
+{
+	clear(list);
+	free(list->head);
+	list->head = list->tail = NULL;
+	list->size = 0;
+	return OK;
+}
+
+
+
+
+
 
 
 

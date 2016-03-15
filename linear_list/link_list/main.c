@@ -27,7 +27,7 @@ void main()
 		printf("*  [7] find 	 	 [8] get_length 	*\n");
 		printf("*  [9] delete_val	 [10] sort   	 	*\n");
 		printf("*  [11] resever		 [12] clear 	 	*\n");
-		printf("*  [13] destroy		 [0] quit_system 	*\n");
+		printf("*  [13*] destroy	 [0] quit_system 	*\n");
 		printf("*************************************************\n");
 
 		printf("请选择操作选项:> ");
@@ -85,12 +85,18 @@ void main()
 				delete_val(&mylist, item);
 				break;
 			case 10:
+				sort(&mylist);
 				break;
 			case 11:
+				resver(&mylist);
+				break;
+			case 12:
+				clear(&mylist);
 				break;
 			default:
 				printf("输入的选择有误，请重新输入.\n");
 				break;
 		}
 	}
+	destroy(&mylist);
 }
