@@ -7,7 +7,7 @@
 */
 
 #include "link_list.h"
-#include "link_list.c"
+#include "v1_link_list.c"
 
 void main()
 {

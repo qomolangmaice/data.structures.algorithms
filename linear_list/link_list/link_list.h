@@ -48,4 +48,10 @@ status resver(link_list *list);
 status clear(link_list *list);
 status destroy(link_list *list);
 
+/***************************************************/
+node* _malloc_node(elem_type val);
+node* begin(link_list *list);
+node* end(link_list *list);
+status insert(link_list *link_list, node* pos, elem_type val);
+
 #endif 

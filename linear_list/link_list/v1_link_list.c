@@ -1,5 +1,5 @@
 /*
-* File Name: link_list.c
+* File Name: v1_link_list.c
 * Description: 
 * Author: iczelion
 * Email: qomolangmaice@163.com 
@@ -17,6 +17,12 @@ status init_list(link_list *list)
 
 status push_back(link_list *list, elem_type item)
 {
+	insert(list, end(list), item);
+	return OK;
+}
+/*
+status push_back(link_list *list, elem_type item)
+{
 	node *s = (node *)malloc(sizeof(node));
 	assert(s != NULL);
 	s->data = item;
@@ -27,6 +33,7 @@ status push_back(link_list *list, elem_type item)
 	list->size++;
 	return OK;
 }
+*/
 
 status show_list(link_list *list)
 {
@@ -42,6 +49,13 @@ status show_list(link_list *list)
 
 status push_front(link_list *list, elem_type item)
 {
+	insert(list, begin(list), item);
+	return OK;
+}
+
+/*
+status push_front(link_list *list, elem_type item)
+{
 	node *s = (node *)malloc(sizeof(node));
 	assert(s != NULL);
 	s->data = item;
@@ -55,7 +69,7 @@ status push_front(link_list *list, elem_type item)
 	list->size++;
 	return OK;
 }
-
+*/
 status pop_back(link_list *list)
 {
 	if(list->size == 0)
@@ -90,10 +104,13 @@ status pop_front(link_list *list)
 /* insert_val函数的操作前提是单链表中的数据是升序的 */
 status insert_val(link_list *list, elem_type val)
 {
-	node *s = (node *)malloc(sizeof(node));
-	assert(s != NULL);
-	s->data = val;
-	s->next = NULL;
+	/*
+		node *s = (node *)malloc(sizeof(node));
+		assert(s != NULL);
+		s->data = val;
+		s->next = NULL;
+	*/
+	node *s = _malloc_node(val);
 
 	node *p = list->head;
 	while(p->next != NULL && p->next->data < val)
@@ -228,11 +245,39 @@ status destroy(link_list *list)
 	return OK;
 }
 
+node* _malloc_node(elem_type val)
+{
+	node *s = (node*)malloc(sizeof(node));
+	assert(s != NULL);
+	s->data = val;
+	s->next = NULL;
+	return s;
+}
 
+node* begin(link_list *list)
+{
+	return list->head->next;
+}
 
+node* end(link_list *list)
+{
+	return list->tail->next;
+}
 
+status insert(link_list *list, node* pos, elem_type val)
+{
+	node* p = list->head;
+	while(p->next != pos)
+		p = p->next;
 
-
+	node* s = _malloc_node(val);
+	s->next = p->next;
+	p->next = s;
+	if(pos == NULL)
+		list->tail = s;
+	list->size++;
+	return OK;
+}
 
 
 
