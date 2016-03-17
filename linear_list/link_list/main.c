@@ -28,6 +28,7 @@ void main()
 		printf("*  [9] delete_val	 [10] sort   	 	*\n");
 		printf("*  [11] resever		 [12] clear 	 	*\n");
 		printf("*  [13*] destroy	 [0] quit_system 	*\n");
+		printf("*  [14] prior_node 	 [15] next_node 	*\n");
 		printf("*************************************************\n");
 
 		printf("请选择操作选项:> ");
@@ -93,6 +94,33 @@ void main()
 			case 12:
 				clear(&mylist);
 				break;
+			case 14:
+				printf("请输入要查找的数据:>");
+				scanf("%d", &item);
+				p = prior_node(&mylist, item);
+				if (p == NULL || p == (&mylist)->head)
+				{
+					printf("要查找的数据在单链表中不存在前驱.\n");
+				}
+				else
+				{
+			 	 	printf("要查找的数据在单链表中的前驱为:%d.\n", p->data);	
+				}
+				break;
+ 	 	 	case 15:
+				printf("请输入要查找的数据:>");
+				scanf("%d", &item);
+				p = next_node(&mylist, item);
+				if (p == NULL)
+				{
+					printf("要查找的数据在单链表中不存在后继.\n");
+				}
+				else
+				{
+			 	 	printf("要查找的数据在单链表中的后继为:%d.\n", p->data);	
+				}
+				break;
+
 			default:
 				printf("输入的选择有误，请重新输入.\n");
 				break;

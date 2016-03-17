@@ -228,6 +228,34 @@ status destroy(link_list *list)
 	return OK;
 }
 
+node* prior_node(link_list *list, elem_type val)
+{
+	if(list->size == 0 || list->size == 1)
+	{
+		printf("要查找的数据在单链表中不存在前驱.\n");
+	 	return ERROR;
+	}
+
+	node *p = list->head;	
+ 	while(p != NULL && p->next->data != val)
+		p = p->next;
+
+	return p;
+}
+
+node* next_node(link_list *list, elem_type val)
+{
+	if(list->size == 0)
+	{
+		printf("要查找的数据在单链表中不存在后继.\n");
+	 	return ERROR;
+	}
+
+	node *p = list->head;
+	while(p->next != NULL && p->data != val)
+		p = p->next;
+	return p->next;
+}
 
 
 

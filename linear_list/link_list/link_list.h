@@ -48,6 +48,9 @@ status resver(link_list *list);
 status clear(link_list *list);
 status destroy(link_list *list);
 
+node* prior_node(link_list *list, elem_type val);
+node* next_node(link_list *list, elem_type val);
+
 /***************************************************/
 node* _malloc_node(elem_type val);
 node* begin(link_list *list);
