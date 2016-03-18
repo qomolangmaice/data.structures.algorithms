@@ -87,6 +87,25 @@ status pop_front(circular_list *list)
 
 status insert_val(circular_list *list, elem_type val)
 {
+	if(list->size == 0)
+		return ERROR;
+
+	node *p = list->head;
+	while(p->next != list->tail && p->next->data < val)
+		p = p->next;
+ 	
+	if(p->next == list->tail && p->next->data < val)
+	{
+	  	push_back(list, val);
+	}
+	else
+	{
+		node *s = _malloc_node(list, val);
+		s->next = p->next;
+		p->next = s;
+		list->size++;
+	}
+	return OK;
 }
 
 
