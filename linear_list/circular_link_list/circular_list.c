@@ -108,6 +108,14 @@ status insert_val(circular_list *list, elem_type val)
 	return OK;
 }
 
+node* find(circular_list *list, elem_type key)
+{
+	node *p = list->head->next;
+	while(p != NULL && p->data != key)
+		p = p->next;
+	return p;
+}
+
 
 
 

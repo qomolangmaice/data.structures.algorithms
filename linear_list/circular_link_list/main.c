@@ -66,7 +66,6 @@ void main()
 				scanf("%d", &item);
 				insert_val(&mylist, item);
 				break;
-				/*
 			case 7:
 				printf("请输入要查找的数据:>");
 				scanf("%d", &item);
@@ -77,6 +76,7 @@ void main()
 					printf("要查找的数据在单链表中不存在.");
 				}
 				break;
+				/*
 			case 8:
 				printf("单链表的长度为: %d\n", get_length(&mylist));
 				break;
