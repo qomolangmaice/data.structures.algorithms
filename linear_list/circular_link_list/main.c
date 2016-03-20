@@ -76,7 +76,6 @@ void main()
 					printf("要查找的数据在单链表中不存在.");
 				}
 				break;
-				/*
 			case 8:
 				printf("单链表的长度为: %d\n", get_length(&mylist));
 				break;
@@ -94,6 +93,7 @@ void main()
 			case 12:
 				clear(&mylist);
 				break;
+				/*
 			case 14:
 				printf("请输入要查找的数据:>");
 				scanf("%d", &item);
@@ -127,5 +127,5 @@ void main()
 				break;
 		}
 	}
-	//destroy(&mylist);
+	destroy(&mylist);
 }
