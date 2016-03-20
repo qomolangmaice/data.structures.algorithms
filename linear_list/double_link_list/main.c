@@ -45,7 +45,6 @@ void main()
 					push_back(&mylist, item);
 				}
 				break;
-			/*
 			case 2:
 				printf("请输入要插入的数据(头插法, -1结束);>");
 				while(scanf("%d", &item), item != -1)
@@ -53,11 +52,9 @@ void main()
 					push_front(&mylist, item);
 				}
 				break;
-				*/
 			case 3:
 				show_list(&mylist);
 				break;
-				/*
 			case 4:
 				pop_back(&mylist);
 				break;
@@ -82,6 +79,7 @@ void main()
 			case 8:
 				printf("双向链表的长度为: %d\n", get_length(&mylist));
 				break;
+				/*
 			case 9:
 				printf("请输入要删除的值:> ");
 				scanf("%d", &item);
