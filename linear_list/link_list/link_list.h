@@ -31,6 +31,7 @@ typedef struct link_list{
 	size_t size;
 } link_list; 
 
+node* _malloc_node(elem_type val);
 status init_list(link_list *list);
 status push_back(link_list *list, elem_type item);
 status show_list(link_list *list);

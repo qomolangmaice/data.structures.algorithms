@@ -6,6 +6,15 @@
 * Created: 2016.03.10 21:42:35
 */
 
+node* _malloc_node(elem_type val)
+{
+	node *s = (node*)malloc(sizeof(node));
+	assert(s != NULL);
+	s->data = val;
+	s->next = NULL;
+	return s;
+}
+
 status init_list(link_list *list)
 {
 	list->head = list->tail = (node *)malloc(sizeof(node));	
@@ -17,10 +26,7 @@ status init_list(link_list *list)
 
 status push_back(link_list *list, elem_type item)
 {
-	node *s = (node *)malloc(sizeof(node));
-	assert(s != NULL);
-	s->data = item;
-	s->next = NULL;
+	node *s = _malloc_node(item);
 
 	list->tail->next = s;
 	list->tail = s;
@@ -42,10 +48,7 @@ status show_list(link_list *list)
 
 status push_front(link_list *list, elem_type item)
 {
-	node *s = (node *)malloc(sizeof(node));
-	assert(s != NULL);
-	s->data = item;
-
+ 	node *s = _malloc_node(item);
 	s->next = list->head->next;
 	list->head->next = s;
 	if(list->size == 0)
@@ -90,10 +93,7 @@ status pop_front(link_list *list)
 /* insert_val函数的操作前提是单链表中的数据是升序的 */
 status insert_val(link_list *list, elem_type val)
 {
-	node *s = (node *)malloc(sizeof(node));
-	assert(s != NULL);
-	s->data = val;
-	s->next = NULL;
+	node *s = _malloc_node(val);
 
 	node *p = list->head;
 	while(p->next != NULL && p->next->data < val)
