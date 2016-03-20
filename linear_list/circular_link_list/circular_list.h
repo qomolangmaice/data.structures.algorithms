@@ -29,7 +29,7 @@ typedef struct circular_list{
 	size_t size;
 } circular_list;
 
-node* _malloc_node(circular_list *list, elem_type val);
+node* _malloc_node(elem_type val);
 status init_list(circular_list *list);
 status push_back(circular_list *list, elem_type item);
 status show_list(circular_list *list);

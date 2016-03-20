@@ -6,7 +6,7 @@
 * Created: 2016.03.18 19:42:33
 */
 
-node* _malloc_node(circular_list *list, elem_type val)
+node* _malloc_node(elem_type val)
 {
 	node *s = (node*)malloc(sizeof(node));
 	assert(s != NULL);
@@ -27,7 +27,7 @@ status init_list(circular_list *list)
 
 status push_back(circular_list *list, elem_type item)
 {
-	node *s = _malloc_node(list, item);
+	node *s = _malloc_node(item);
 	list->tail->next = s;
 	list->tail= s;
 	list->tail->next = list->head;
@@ -48,7 +48,7 @@ status show_list(circular_list *list)
 
 status push_front(circular_list *list, elem_type item)
 {
-	node *s = _malloc_node(list, item);
+	node *s = _malloc_node(item);
 	s->next = list->head->next;
 	list->head->next = s;
 	if(list->head == list->tail)
@@ -100,7 +100,7 @@ status insert_val(circular_list *list, elem_type val)
 	}
 	else
 	{
-		node *s = _malloc_node(list, val);
+		node *s = _malloc_node(val);
 		s->next = p->next;
 		p->next = s;
 		list->size++;
