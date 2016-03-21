@@ -79,7 +79,6 @@ void main()
 			case 8:
 				printf("双向链表的长度为: %d\n", get_length(&mylist));
 				break;
-				/*
 			case 9:
 				printf("请输入要删除的值:> ");
 				scanf("%d", &item);
@@ -91,6 +90,7 @@ void main()
 			case 11:
 				resver(&mylist);
 				break;
+				/*
 			case 12:
 				clear(&mylist);
 				break;

@@ -143,6 +143,91 @@ int get_length(d_link_list *list)
 	return list->size;
 }
 
+status delete_val(d_link_list *list, elem_type val)
+{
+	if(list->size == 0)
+		return ERROR;
+	
+	node *p = find(list, val);
+	if(p == NULL)
+	{
+		printf("要删除的值不存在.\n");
+		return ERROR;
+	}
+
+	if(p == list->tail)
+		pop_back(list);
+	else
+	{
+		p->prior->next = p->next;
+		p->next->prior = p->prior;
+		free(p);
+		list->size--;
+	}
+	return OK;
+}
+
+status sort(d_link_list *list)
+{
+	if(list->size == 0 || list->size == 1)
+		return ERROR;
+
+	node *s = list->head->next;
+	node *q = s->next;
+
+	list->tail = s;
+	list->tail->next = NULL;
+
+	while(q != NULL)
+	{
+		s = q;
+		q = q->next;
+
+		node *p = list->head;
+		while(p->next != list->tail && p->next->data < s->data)
+			p = p->next;
+
+		if(p->next == list->tail && p->next->data < s->data)
+		{
+			s->next = NULL;
+			s->prior = list->tail;
+			list->tail->next = s;
+			list->tail = s;
+		}
+		else
+		{
+			s->next = p->next;
+			s->next->prior = s;
+			s->prior = p;
+			p->next = s;
+		}
+	}
+	return OK;
+}
+
+status resver(d_link_list *list)
+{
+	if(list->size == 0 || list->size == 1)
+		return ERROR;
+
+	node *s = list->head->next;
+	node *q = s->next;
+
+	list->tail = s;
+	list->tail->next = NULL;
+
+	while(q != NULL)
+	{
+		s = q;
+		q = q->next;
+
+		s->next = list->head->next;
+		s->next->prior = s;
+		s->prior = list->head;
+		list->head->next = s;
+	}
+	return OK;
+}
 
 
 
