@@ -229,6 +229,39 @@ status resver(d_link_list *list)
 	return OK;
 }
 
+status clear(d_link_list *list)
+{
+	if(list->size == 0)
+		return ERROR;
+
+	node *p = list->head->next;
+	while(p != NULL)
+	{
+		if(p == list->tail)
+		{
+			list->tail = list->head;
+			list->tail->next = NULL;
+		}
+		else
+		{
+			p->next->prior = list->head;
+			list->head->next = p->next;
+		}
+		free(p);
+		p = list->head->next;
+	}
+	list->size = 0;
+	return OK;
+}
+
+status destroy(d_link_list *list)
+{
+	clear(list);
+	free(list->head);
+	list->head = list->tail = NULL;
+	return OK;
+}
+
 
 
 
