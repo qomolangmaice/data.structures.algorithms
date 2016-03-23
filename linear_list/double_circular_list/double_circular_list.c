@@ -48,3 +48,50 @@ status show_list(dou_cir_list *list)
 	printf("Null.\n");
 	return OK;
 }
+
+status push_front(dou_cir_list *list, elem_type val)
+{
+	node *s = _malloc_node(val);
+	s->next = list->head->next;
+	s->next->prior = s;
+	s->prior = list->head;
+	list->head->next = s;
+
+	if(list->head == list->tail)
+		list->tail = s;
+	list->size++;
+	return OK;
+}
+
+status pop_back(dou_cir_list *list)
+{
+	if(list->size == 0)
+		return ERROR;
+
+	node *p = list->head;
+	while(p->next != list->tail)
+		p = p->next;
+
+	p->next = list->head;
+	list->head->prior = p;
+	list->size--;
+	return OK;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

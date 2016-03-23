@@ -45,7 +45,6 @@ void main()
 					push_back(&mylist, item);
 				}
 				break;
-				/*
 			case 2:
 				printf("请输入要插入的数据(头插法, -1结束);>");
 				while(scanf("%d", &item), item != -1)
@@ -53,14 +52,13 @@ void main()
 					push_front(&mylist, item);
 				}
 				break;
-				*/
 			case 3:
 				show_list(&mylist);
 				break;
-				/*
 			case 4:
 				pop_back(&mylist);
 				break;
+				/*
 			case 5:
 				pop_front(&mylist);
 				break;
