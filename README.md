@@ -6,7 +6,7 @@ This project is about data structure that contains sequence list, linked list, s
 ####linear list
 -->[sequence list](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/linear_list/seq_list)
 
--->linked list
+-->####linked list
 
 ---->[link_list](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/linear_list/link_list)
 
