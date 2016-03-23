@@ -12,7 +12,7 @@ This project is about data structure that contains sequence list, linked list, s
 
 [double_link_list](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/linear_list/double_link_list)
 
-[double_circular_list](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/linear_list/double_circular_lis)
+[double_circular_list](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/linear_list/double_circular_list)
 
 
 ###Developping environment(in linux/windows/MacOS): 
