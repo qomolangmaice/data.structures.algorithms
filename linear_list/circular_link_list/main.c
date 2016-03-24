@@ -70,11 +70,12 @@ void main()
 				printf("请输入要查找的数据:>");
 				scanf("%d", &item);
 				p = find(&mylist, item);
-				printf("在单链表查找到数据: %d\n", p->data);
 				if (p == NULL)
 				{
 					printf("要查找的数据在单链表中不存在.");
 				}
+				else
+				 	printf("在单链表查找到数据: %d\n", p->data);
 				break;
 			case 8:
 				printf("单链表的长度为: %d\n", get_length(&mylist));

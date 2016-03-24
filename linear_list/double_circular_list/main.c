@@ -58,7 +58,6 @@ void main()
 			case 4:
 				pop_back(&mylist);
 				break;
-				/*
 			case 5:
 				pop_front(&mylist);
 				break;
@@ -71,20 +70,22 @@ void main()
 				printf("请输入要查找的数据:>");
 				scanf("%d", &item);
 				p = find(&mylist, item);
-				printf("在双向链表查找到数据: %d\n", p->data);
 				if (p == NULL)
 				{
-					printf("要查找的数据在双向链表中不存在.");
+					printf("要查找的数据在双向循环链表中不存在.\n");
 				}
+				else
+				 	printf("在双向循环链表查找到数据: %d\n", p->data);
 				break;
 			case 8:
-				printf("双向链表的长度为: %d\n", get_length(&mylist));
+				printf("双向循环链表的长度为: %d\n", get_length(&mylist));
 				break;
 			case 9:
 				printf("请输入要删除的值:> ");
 				scanf("%d", &item);
 				delete_val(&mylist, item);
 				break;
+				/*
 			case 10:
 				sort(&mylist);
 				break;
@@ -100,11 +101,11 @@ void main()
 				p = prior_node(&mylist, item);
 				if (p == NULL || p == (&mylist)->head)
 				{
-					printf("要查找的数据在双向链表中不存在前驱.\n");
+					printf("要查找的数据在双向循环链表中不存在前驱.\n");
 				}
 				else
 				{
-			 	 	printf("要查找的数据在双向链表中的前驱为:%d.\n", p->data);	
+			 	 	printf("要查找的数据在双向循环链表中的前驱为:%d.\n", p->data);	
 				}
 				break;
  	 	 	case 15:
@@ -113,11 +114,11 @@ void main()
 				p = next_node(&mylist, item);
 				if (p == NULL)
 				{
-					printf("要查找的数据在双向链表中不存在后继.\n");
+					printf("要查找的数据在双向循环链表中不存在后继.\n");
 				}
 				else
 				{
-			 	 	printf("要查找的数据在双向链表中的后继为:%d.\n", p->data);	
+			 	 	printf("要查找的数据在双向循环链表中的后继为:%d.\n", p->data);	
 				}
 				break;
  	 	 	*/
