@@ -157,6 +157,76 @@ status delete_val(dou_cir_list *list, elem_type val)
 	return OK;
 }
 
+status sort(dou_cir_list *list)
+{
+	if(list->size == 0 || list->size == 1)
+		return ERROR;
+
+	node *s = list->head->next;
+	node *q = s->next;
+	list->tail->next = NULL;
+
+	list->tail = s;
+	list->tail->next = list->head;
+	list->tail->prior = list->head;
+	list->head->prior = list->tail;
+	list->head->next = list->tail;
+
+	while(q != NULL)
+	{
+		s = q;
+		q = q->next;
+
+		node *p = list->head;
+		while(p->next != list->tail && p->next->data < s->data)
+			p = p->next;
+
+		if(p->next == list->tail && p->next->data < s->data)
+		{
+			s->next = list->tail->next;
+			s->next->prior = s;
+			s->prior = list->tail;
+			list->tail->next = s;
+			list->tail = s;
+		}
+		else 
+		{
+			s->next = p->next;
+			s->next->prior = s;
+			s->prior = p;
+			p->next = s;
+		}
+	}
+	return OK;
+}
+
+status resver(dou_cir_list *list)
+{
+	if(list->size == 0 || list->size == 1)
+		return ERROR;
+
+	node *s = list->head->next;
+	node *q = s->next;
+	list->tail->next = NULL;
+
+	list->tail = s;
+	list->tail->next = list->head;
+	list->tail->prior = list->head;
+	list->head->prior = list->tail;
+	list->head->next = list->tail;
+
+	while(q != NULL)
+	{
+		s = q;
+		q = q->next;
+
+		s->next = list->head->next;
+		s->next->prior = s;
+		s->prior = list->head;
+		list->head->next = s;
+	}
+	return OK;
+}
 
 
 

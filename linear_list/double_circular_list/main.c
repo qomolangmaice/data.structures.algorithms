@@ -85,13 +85,13 @@ void main()
 				scanf("%d", &item);
 				delete_val(&mylist, item);
 				break;
-				/*
 			case 10:
 				sort(&mylist);
 				break;
 			case 11:
 				resver(&mylist);
 				break;
+				/*
 			case 12:
 				clear(&mylist);
 				break;
