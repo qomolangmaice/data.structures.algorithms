@@ -228,17 +228,36 @@ status resver(dou_cir_list *list)
 	return OK;
 }
 
+status clear(dou_cir_list *list)
+{
+	if(list->size == 0)
+		return ERROR;
 
+	node *p = list->head->next;
+	while(p != list->head)
+	{
+		if(p == list->head)
+		{
+			list->tail = list->head;
+			list->tail->next = list->head;
+			list->head->prior = list->tail;
+		}
+		p->next->prior = list->head;
+		list->head->next = p->next;
+		free(p);
+		p = p->next;
+	}
+	list->size = 0;
+	return OK;
+}
 
-
-
-
-
-
-
-
-
-
-
+status destroy(dou_cir_list *list)
+{
+	clear(list);
+	free(list->head);
+	list->head = list->tail = NULL;
+	list->size = 0;
+	return OK;
+}
 
 

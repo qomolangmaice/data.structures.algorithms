@@ -27,7 +27,6 @@ void main()
 		printf("*  [9] delete_val	 [10] sort   	 	*\n");
 		printf("*  [11] resever		 [12] clear 	 	*\n");
 		printf("*  [13*] destroy	 [0] quit_system 	*\n");
-		printf("*  [14] prior_node 	 [15] next_node 	*\n");
 		printf("*************************************************\n");
 
 		printf("请选择操作选项:> ");
@@ -91,10 +90,10 @@ void main()
 			case 11:
 				resver(&mylist);
 				break;
-				/*
 			case 12:
 				clear(&mylist);
 				break;
+				/*
 			case 14:
 				printf("请输入要查找的数据:>");
 				scanf("%d", &item);
@@ -127,5 +126,5 @@ void main()
 				break;
 		}
 	}
-	//destroy(&mylist);
+	destroy(&mylist);
 }

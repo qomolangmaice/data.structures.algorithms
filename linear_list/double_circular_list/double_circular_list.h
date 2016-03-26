@@ -47,8 +47,5 @@ status resver(dou_cir_list *list);
 status clear(dou_cir_list *list);
 status destroy(dou_cir_list *list);
 
-node* prior_node(dou_cir_list *list, elem_type val);
-node* next_node(dou_cir_list *list, elem_type val);
-
 #endif
 
