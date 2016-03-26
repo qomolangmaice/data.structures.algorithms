@@ -13,8 +13,10 @@
 #include <malloc.h>
 #include <assert.h>
 
-typedef int elem_type;
+//typedef int elem_type;
+typedef char elem_type;
 typedef int status;
+typedef int boolean;
 
 #define OK 1
 #define ERROR 0
