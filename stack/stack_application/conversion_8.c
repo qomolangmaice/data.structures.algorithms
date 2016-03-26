@@ -48,20 +48,17 @@ void main()
 
 		if(select == 0)
 			break;
-
-		switch(select)
+		else if(select == 1)
 		{
-			case 1:
-				printf("请输入要转换的十进制数(-1结束):");
-				while(scanf("%d", &value), value != -1)
-				{
-					conversion_8(value);
-				}
-				break;
-			default:
-				printf("输入有误，请重新输入.\n");
-				break;
+			printf("请输入要转换的十进制数(-1结束):");
+			while(scanf("%d", &value), value != -1)
+			{
+				conversion_8(value);
+			}
 		}
+		else
+			printf("输入有误，请重新输入.\n");
+
 	}
 }
 
