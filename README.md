@@ -14,6 +14,9 @@ This project is about data structure that contains sequence list, linked list, s
 
 -->[double_circular_list](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/linear_list/double_circular_list)
 
+####stack
+-->[seq_stack](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/stack/seq_stack)
+
 ###Developping environment(in linux/windows/MacOS): 
 	sudo apt-get -y install gcc gdb make 
 
