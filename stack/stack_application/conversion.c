@@ -1,5 +1,5 @@
 /*
- *     File Name: conversion_8.c
+ *     File Name: conversion.c
  *     Description: Hexademical conversion 
  *     Author: iczelion
  *     Email: qomolangmaice@163.com 
@@ -9,7 +9,7 @@
 #include "seq_stack.h"
 #include "seq_stack.c"
 
-void conversion_8(int value)
+void conversion(int hex, int value)
 {
 	seq_stack stack;
 	elem_type val;
@@ -18,8 +18,8 @@ void conversion_8(int value)
 
    	while(value)	
 	{
-		push(&stack, value % 8);
-		value /= 8;
+		push(&stack, value % hex);
+		value /= hex;
 	}
 
 	while(!is_empty(&stack))
@@ -33,15 +33,16 @@ void conversion_8(int value)
 
 void main()
 {
+	int hex;
 	int value;
   	int select = 1;	
 
 	while(select)
 	{
-		printf("***********************\n");
-		printf("* [1] input a number  *\n");
-		printf("* [0] quit            *\n");
-		printf("***********************\n");
+		printf("*******************************************\n");
+		printf("* [1] 输入转换进制和需要被转换的十进制数  *\n");
+		printf("* [0] 退出                                *\n");
+		printf("*******************************************\n");
 
 		printf("请输入操作选项:");
 		scanf("%d", &select);
@@ -50,21 +51,17 @@ void main()
 			break;
 		else if(select == 1)
 		{
+			printf("请输入转换进制:");
+		 	scanf("%d", &hex);
 			printf("请输入要转换的十进制数(-1结束):");
 			while(scanf("%d", &value), value != -1)
 			{
-				conversion_8(value);
+				conversion(hex, value);
 			}
 		}
 		else
 			printf("输入有误，请重新输入.\n");
-
 	}
 }
-
-
-
-
-
 
 
