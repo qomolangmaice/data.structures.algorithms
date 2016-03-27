@@ -32,7 +32,6 @@ typedef struct link_queue{
 	queue_node *tail;
 }link_queue;
 
-queue_node* _malloc_node(elem_type val);
 status init_queue(link_queue *queue);
 status is_empty(link_queue *queue);
 status en_queue(link_queue *queue, elem_type val);

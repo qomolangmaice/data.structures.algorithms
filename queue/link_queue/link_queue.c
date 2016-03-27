@@ -6,13 +6,6 @@
  *     Created: 2016.03.27 13:01:10
  */
 
-queue_node* _malloc_node(elem_type val)
-{
-	queue_node *s = (queue_node*)malloc(sizeof(queue_node)); 
-	assert(s != NULL);
-	s->data = val;
-	s->next = NULL;
-}
 status init_queue(link_queue *queue)
 {
 	queue_node *s = (queue_node*)malloc(sizeof(queue_node));
@@ -32,7 +25,11 @@ status is_empty(link_queue *queue)
 
 status en_queue(link_queue *queue, elem_type val)
 {
-	queue_node *s = _malloc_node(val);
+	queue_node *s = (queue_node*)malloc(sizeof(queue_node)); 
+	assert(s != NULL);
+	s->data = val;
+	s->next = NULL;
+
 	queue->tail->next =s;
 	queue->tail = s;
 	return OK;
@@ -79,7 +76,7 @@ int get_length(link_queue *queue)
 status show_queue(link_queue *queue)
 {
 	queue_node *p = queue->head->next;
-	printf("head:>");
+	printf("Head:>");
 	while(p != NULL)
 	{
 		printf("%d ", p->data);
