@@ -77,7 +77,7 @@ status show_stack(seq_stack *stack)
 	printf("栈中的数据元素为:");
 	while(p < stack->top)
 	{
- 	 	printf("%d ", *p++);
+ 	 	printf("%c", *p++);
 	}
 	printf("\n");
 	return OK;
