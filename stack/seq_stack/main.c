@@ -32,6 +32,8 @@ void main()
 	printf("栈的长度为:%d\n", get_length(&mystack));
 
 	show_stack(&mystack);
+	clear_stack(&mystack);
+	printf("栈清空完毕.\n");
 	destroy_stack(&mystack);
 	printf("栈销毁完毕.\n");
 }

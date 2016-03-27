@@ -83,6 +83,12 @@ status show_stack(seq_stack *stack)
 	return OK;
 }
 
+status clear_stack(seq_stack *stack)
+{
+	stack->top = stack->base;
+	return OK;
+}
+
 status destroy_stack(seq_stack *stack)
 {
 	free(stack->base);

@@ -39,6 +39,7 @@ status pop(seq_stack *stack, elem_type *p_val);
 status get_top(seq_stack *stack, elem_type *p_val);
 int get_length(seq_stack *stack);
 status show_stack(seq_stack *stack);
+status clear_stack(seq_stack *stack);
 status destroy_stack(seq_stack *stack);
 
 #endif
