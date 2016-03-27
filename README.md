@@ -26,22 +26,7 @@ This project is about data structure that contains sequence list, linked list, s
 
 -->[seq_queue](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/queue/seq_queue)
 
-.
-├── linear_list
-│   ├── circular_link_list
-│   ├── double_circular_list
-│   ├── double_link_list
-│   ├── link_list
-│   ├── seq_list
-│   └── static_link_list
-├── queue
-│   ├── link_queue
-│   └── seq_queue
-└── stack
-    ├── link_stack
-    ├── seq_stack
-    └── stack_application
-
+-->[circular_seq_queue](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/queue/circular_seq_queue)
 
 ###Developping environment(in linux/windows/MacOS): 
 	sudo apt-get -y install gcc gdb make 
