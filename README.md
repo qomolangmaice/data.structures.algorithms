@@ -21,6 +21,9 @@ This project is about data structure that contains sequence list, linked list, s
 
 -->[stack_application](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/stack/stack_application)
 
+####queue
+-->[link_queue](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/queue/link_queue)
+
 ###Developping environment(in linux/windows/MacOS): 
 	sudo apt-get -y install gcc gdb make 
 
