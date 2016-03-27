@@ -16,6 +16,8 @@
 
 #define OK 1
 #define ERROR 0
+#define TRUE 1
+#define FALSE 0
 
 typedef int elem_type;
 typedef int status;
@@ -26,13 +28,19 @@ typedef struct queue_node {
 } queue_node; 
 
 typedef struct link_queue{
-	queue_node *front;
+	queue_node *head;
 	queue_node *tail;
 }link_queue;
 
 queue_node* _malloc_node(elem_type val);
 status init_queue(link_queue *queue);
+status is_empty(link_queue *queue);
 status en_queue(link_queue *queue, elem_type val);
+status de_queue(link_queue *queue, elem_type *p_val);
+status get_head(link_queue *queue, elem_type *p_val);
+int get_length(link_queue *queue);
 status show_queue(link_queue *queue);
+status clear_queue(link_queue *queue);
+status destroy_queue(link_queue *queue);
 
 #endif
