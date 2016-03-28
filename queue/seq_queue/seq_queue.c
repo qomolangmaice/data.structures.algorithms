@@ -8,7 +8,7 @@
 
 status init_queue(seq_queue *queue)
 {
-	queue->base = (elem_type*)malloc(sizeof(elem_type));
+	queue->base = (elem_type*)malloc(QUEUE_INIT_SIZE * sizeof(elem_type));
 	assert(queue->base != NULL);
 	queue->front = queue->rear = 0;
 	return OK;
