@@ -17,7 +17,7 @@
 #define TRUE 1
 #define FALSE 0
 
-#define QUEUE_INIT_SIZE 8
+#define MAXSIZE 8
 #define QUEUEINCREMENT 4
 
 typedef int elem_type;
@@ -33,6 +33,8 @@ status init_queue(cir_seq_queue *queue);
 status is_empty(cir_seq_queue *queue);
 status is_full(cir_seq_queue *queue);
 status en_queue(cir_seq_queue *queue, elem_type val);
+status de_queue(cir_seq_queue *queue);
+status show_queue(cir_seq_queue *queue);
 
 
 #endif
