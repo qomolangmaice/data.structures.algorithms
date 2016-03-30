@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAXSTRLEN 20
+#define MAXSTRLEN 10 
 #define u_char unsigned char
 #define OK 1
 #define ERROR 0

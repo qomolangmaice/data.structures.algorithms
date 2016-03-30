@@ -71,6 +71,64 @@ int str_length(stack_string s)
 	return len;
 }
 
+status str_concat(stack_string t, stack_string s1, stack_string s2)
+{
+	int len1 = str_length(s1);
+	int len2 = str_length(s2);
+	int i,j;
+
+	if(len1 + len2 <= MAXSTRLEN)
+	{
+		for(i=0; i<len1; ++i)
+			t[i] = s1[i];
+		for(j=0; j<len2; ++j)
+			t[i+j] = s2[j];
+		t[len1 + len2] = '\0';
+	}
+	else if(len1 < MAXSTRLEN)
+	{
+		for(i=0; i<len1; ++i)
+			t[i] = s1[i];
+		for(j=0; j<MAXSTRLEN-len1; ++j)
+			t[i + j] = s2[j];
+		t[MAXSTRLEN] = '\0';
+	}
+	else
+	{
+		for(i=0; i<len1; ++i)
+			t[i] = s1[i];
+		t[MAXSTRLEN] = '\0';
+	}
+	return OK;
+}
+
+status sub_string(stack_string s, stack_string sub, int pos, int len)
+{
+	int s_len = str_length(s);
+	if(pos<0 || pos>=s_len || len<0 || len>s_len)
+		return ERROR;
+	for(int i=0; i<len; ++i)
+		sub[i] = s[pos+i];
+	sub[len] = '\0';
+	return OK;
+}
+
+status str_insert(stack_string s, int pos, stack_string t)
+{
+	int s_len = str_length(s);
+	int t_len = str_length(t);
+
+	if(s_len + t_len <= MAXSTRLEN)
+	{
+		for(int i=s_len-1; i>=pos; --i)
+			s[i+t_len] = s[i];
+		int j = pos;
+		for(int i=0; i<t_len; ++i)
+			s[j+i] = t[i];
+		s[s_len+t_len] = '\0';
+	}
+
+}
 
 
 
