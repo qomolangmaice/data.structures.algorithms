@@ -31,6 +31,8 @@ This project is about data structure that contains sequence list, linked list, s
 ####string
 --->[stack_string](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/string/stack_string)
 
+--->[heap_string](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/string/heap_string)
+
 ###Developping environment(in linux/windows/MacOS): 
 	sudo apt-get -y install gcc gdb make 
 
