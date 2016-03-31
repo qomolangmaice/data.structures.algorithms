@@ -122,19 +122,34 @@ status str_insert(stack_string s, int pos, stack_string t)
 	{
 		for(int i=s_len-1; i>=pos; --i)
 			s[i+t_len] = s[i];
-		int j = pos;
 		for(int i=0; i<t_len; ++i)
-			s[j+i] = t[i];
+			s[pos+i] = t[i];
 		s[s_len+t_len] = '\0';
 	}
-
+	else if(s_len < MAXSTRLEN)
+	{
+		t_len = MAXSTRLEN - s_len;
+		for(int i=s_len-1; i>=pos; --i)
+			s[i+t_len] = s[i];
+		for(int i=0; i<t_len; ++i)
+			s[pos+i] = t[i];
+		s[s_len+t_len] = '\0';
+	}
+	return OK;
 }
 
+status str_delete(stack_string s, int pos, int len)
+{
+	int s_len = str_length(s);
+	for(int i=pos; i<len; ++i)
+		s[i] = s[i+len];
+	s[s_len - len] = '\0';
+	return OK;
+}
 
-
-
-
-
-
-
+status str_clear(stack_string s)
+{
+	s[0] = '\0';
+	return OK;
+}
 

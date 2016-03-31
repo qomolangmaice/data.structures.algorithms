@@ -39,26 +39,26 @@ void main()
 {
 	stack_string s, sub;
 	init_string(s);
-	str_assign(s, "abcdef");
 
+	//str_assign(s, "abcdefg");
 	//init_string(sub);
 	//str_assign(s, "abcdef");
 	//sub_string(s, sub, 2, 4);
 	//print_string(sub);
-	stack_string t;
-	init_string(t);
-	str_assign(t, "xyz");
+	
+	//str_assign(s, "abc");
+	//stack_string t;
+	//init_string(t);
+	//str_assign(t, "xyz");
 
-	str_insert(s, 1, t);
+	//str_insert(s, 1, t);
+	//print_string(s);
+	
+	str_assign(s, "abcdefg");
+	str_delete(s, 2, 3);
+	print_string(s);
+	str_clear(s);
 	print_string(s);
 }
-
-
-
-
-
-
-
-
 
 
