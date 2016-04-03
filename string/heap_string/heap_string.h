@@ -31,7 +31,7 @@ status str_copy(heap_string *s, heap_string *t);
 status str_empty(heap_string *s);
 status str_compare(heap_string *s, heap_string *t);
 status str_length(heap_string *s);
-status str_concat(heap_string *t, heap_string *s1, heap_string *s2);
+status str_concat(heap_string *s, heap_string *s1, heap_string *s2);
 status sub_string(heap_string *s, heap_string *sub, int pos, int len);
 status str_insert(heap_string *s, int pos, heap_string *t);
 status str_delete(heap_string *s, int pos, int len);
