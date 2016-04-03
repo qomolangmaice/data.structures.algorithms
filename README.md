@@ -33,6 +33,9 @@ This project is about data structure that contains sequence list, linked list, s
 
 --->[heap_string](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/string/heap_string)
 
+####matrix
+--->[sparse_matrix](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/matrix/sparse_matrix)
+
 ###Developping environment(in linux/windows/MacOS): 
 	sudo apt-get -y install gcc gdb make 
 
