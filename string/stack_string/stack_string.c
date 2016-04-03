@@ -141,7 +141,7 @@ status str_insert(stack_string s, int pos, stack_string t)
 status str_delete(stack_string s, int pos, int len)
 {
 	int s_len = str_length(s);
-	for(int i=pos; i<len; ++i)
+	for(int i=pos; i<s_len; ++i)
 		s[i] = s[i+len];
 	s[s_len - len] = '\0';
 	return OK;
@@ -152,4 +152,54 @@ status str_clear(stack_string s)
 	s[0] = '\0';
 	return OK;
 }
+
+status str_index(stack_string s, stack_string t, int pos)
+{
+	int i = pos; 
+	int j = 0;
+	while(s[i] != '\0' && t[j] != '\0')
+	{
+		if(s[i] == t[j])
+		{
+			i++;
+			j++;
+		}
+		else
+		{
+			i = i - j + 1;
+			j = 0;
+		}
+	}
+	if(t[j] == '\0')
+		return i - j;
+	return -1;
+}
+
+status str_replace(stack_string s, stack_string t, stack_string v)
+{
+	int s_len = str_length(s);
+	int t_len = str_length(t);
+	int v_len = str_length(v);
+
+	int index = -1;
+	int pos = 0;
+
+	while(pos < s_len)
+	{
+		index = str_index(s, t, pos);
+		if(index == -1)
+			return ERROR;
+		str_delete(s, index, t_len);
+		str_insert(s, index, v);
+		
+		pos = index + v_len;
+	}
+	return OK;
+}
+
+
+
+
+
+
 

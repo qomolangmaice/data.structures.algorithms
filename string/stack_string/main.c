@@ -37,8 +37,8 @@
 
 void main()
 {
-	stack_string s, sub;
-	init_string(s);
+	//stack_string s, sub;
+	//init_string(s);
 
 	//str_assign(s, "abcdefg");
 	//init_string(sub);
@@ -54,11 +54,38 @@ void main()
 	//str_insert(s, 1, t);
 	//print_string(s);
 	
-	str_assign(s, "abcdefg");
-	str_delete(s, 2, 3);
-	print_string(s);
-	str_clear(s);
+	//str_assign(s, "abcdefg");
+	//str_delete(s, 2, 3);
+	//print_string(s);
+	//str_clear(s);
+	//print_string(s);
+
+	//stack_string s;
+	//init_string(s);
+	//str_assign(s, "ababcababcab");
+
+	//stack_string t;
+	//init_string(t);
+	//str_assign(t, "abc");
+	//int index = str_index(s, t, 0);
+	//printf("查找到字符串匹配起始位置为:%d\n", index);
+	
+	stack_string s;
+	init_string(s);
+	str_assign(s, "ababcababcab");
+	stack_string t;
+	init_string(t);
+	str_assign(t, "abc");
+	stack_string v;
+	str_assign(v, "xy");
+	str_replace(s, t, v);
 	print_string(s);
 }
+
+
+
+
+
+
 
 

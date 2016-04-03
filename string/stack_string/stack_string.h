@@ -34,7 +34,7 @@ status str_insert(stack_string s, int pos, stack_string t);
 status str_delete(stack_string s, int pos, int len);
 status str_clear(stack_string s);
 
-//status str_index(stack_string s, stack_string t, int pos);
-//status str_replace(stack_string s, stack_string t, stack_string v);
+status str_index(stack_string s, stack_string t, int pos);
+status str_replace(stack_string s, stack_string t, stack_string v);
 
 #endif
