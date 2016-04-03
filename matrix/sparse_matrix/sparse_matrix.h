@@ -6,9 +6,6 @@
  *  Created: 2016.04.03 16:36:44
  */
 
-//#ifndef __SPARSE_MATRIX__
-//#define __SPARSE_MATRIX__
-
 #include <stdio.h>
 #include <malloc.h>
 #include <assert.h>
@@ -38,5 +35,16 @@ typedef struct sparse_matrix{
 
 status create_matrix(sparse_matrix *matrix);
 status print_matrix(sparse_matrix *matrix);
+status copy_matrix(sparse_matrix *m_matrix, sparse_matrix *t_matrix);
+status add_matrix(sparse_matrix *m_matrix, sparse_matrix *n_matrix, sparse_matrix *t_matrix);
+status sub_matrix(sparse_matrix *m_matrix, sparse_matrix *n_matrix, sparse_matrix *t_matrix);
+status mul_matrix(sparse_matrix *m_matrix, sparse_matrix *n_matrix, sparse_matrix *t_matrix);
+status transpose_matrix(sparse_matrix *m_matrix, sparse_matrix *t_matrix);
 
-//#endif
+
+
+
+
+
+
+
