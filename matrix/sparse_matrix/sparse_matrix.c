@@ -8,7 +8,7 @@
 
 status create_matrix(sparse_matrix *matrix)
 {
-	FILE *fp = fopen("matrix.txt", "r");
+	FILE *fp = fopen("e_matrix.txt", "r");
 	if(fp == NULL)
 		exit(1);
 
@@ -117,10 +117,58 @@ status sub_matrix(sparse_matrix *m_matrix, sparse_matrix *n_matrix, sparse_matri
 status mul_matrix(sparse_matrix *m_matrix, sparse_matrix *n_matrix, sparse_matrix *t_matrix)
 {
 	if(m_matrix->nu != n_matrix->mu)
+	{
+		printf("两矩阵不能相乘!\n");
 		return ERROR;
+	}
+
 	t_matrix->mu = m_matrix->mu;
 	t_matrix->nu = n_matrix->nu;
-	/* Unfinish */
+	t_matrix->tu = 0;
+
+	int c, c1, c2;
+	if(m_matrix->nu * n_matrix->mu)
+	{
+		for(int i=0; i<m_matrix->nu; ++i)
+		{
+			for(int j=0; j<n_matrix->nu; j++)
+			{
+				c = 0;
+				for(int k=0; k<m_matrix->nu; ++k)
+				{
+					c1 = 0;
+					for(int m=0; m<m_matrix->tu; ++m)
+					{
+						if(m_matrix->data[m].i == i && m_matrix->data[m].j == k)
+						{
+							c1 = m_matrix->data[m].e;
+							break;
+						}
+					}
+					c2 = 0;
+					for(int n=0; n<n_matrix->tu; ++n)
+					{
+						if(n_matrix->data[n].i == k && n_matrix->data[n].j == j)
+						{
+							c2 = n_matrix->data[n].e;
+							break;
+						}
+					}
+
+					if(c1 && c2)
+						c += c1 * c2;
+				} // k for loop 
+
+				if(c)
+				{
+					t_matrix->tu++;
+					t_matrix->data[t_matrix->tu].i = i;
+					t_matrix->data[t_matrix->tu].j = j;
+					t_matrix->data[t_matrix->tu].e = c;
+				} 
+			} // j for loop 
+		} // i for loop
+	}
 }
 
 status transpose_matrix(sparse_matrix *m_matrix, sparse_matrix *t_matrix)
@@ -163,13 +211,11 @@ status fast_transpose_matrix(sparse_matrix *m_matrix, sparse_matrix *t_matrix)
 	if(t_matrix->tu != 0)
 	{
 		for(col=0; col<m_matrix->nu; ++col)
-		{
 			num[col] = 0;
-		}
+
 		for(int t=0; t<m_matrix->tu; ++t)
-		{
 			num[m_matrix->data[t].j]++; 
-		}
+
 		cpot[0] = 0;
 		for(col=1; col<m_matrix->nu; ++col)
 		{
