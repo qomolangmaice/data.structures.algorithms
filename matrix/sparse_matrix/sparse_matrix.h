@@ -18,7 +18,7 @@
 typedef int elem_type;
 typedef int status;
 
-#define MAXSIZE 100
+#define MAXSIZE 1000
 
 typedef struct triple {
 	int i; 	/* row */

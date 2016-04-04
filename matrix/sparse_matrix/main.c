@@ -14,14 +14,14 @@ void main()
 	sparse_matrix sm, sm1, sm2, sm3;
 	memset(&sm, 0, sizeof(sm));
 	memset(&sm1, 0, sizeof(sm1));
-	memset(&sm2, 0, sizeof(sm2));
+	//memset(&sm2, 0, sizeof(sm2));
 	memset(&sm3, 0, sizeof(sm3));
 	create_matrix(&sm);
 	printf("创建矩阵sm:\n");
 	print_matrix(&sm);
 
 	copy_matrix(&sm, &sm1);
-	copy_matrix(&sm, &sm2);
+	//copy_matrix(&sm, &sm2);
 	printf("复制矩阵sm1:\n");
 	print_matrix(&sm1);
 
@@ -36,9 +36,9 @@ void main()
 	//printf("sm1和sm2矩阵相减后的新矩阵为:\n");
 	//print_matrix(&sm);
 
-	mul_matrix(&sm1, &sm2, &sm);
-	printf("矩阵相乘：\n");
-	print_matrix(&sm);
+	//mul_matrix(&sm1, &sm2, &sm);
+	//printf("矩阵相乘：\n");
+	//print_matrix(&sm);
 
 	//transpose_matrix(&sm1, &sm3);
 	printf("快速转置矩阵为:\n");

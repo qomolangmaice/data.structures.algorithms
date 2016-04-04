@@ -8,7 +8,7 @@
 
 status create_matrix(sparse_matrix *matrix)
 {
-	FILE *fp = fopen("e_matrix.txt", "r");
+	FILE *fp = fopen("matrix.txt", "r");
 	if(fp == NULL)
 		exit(1);
 
