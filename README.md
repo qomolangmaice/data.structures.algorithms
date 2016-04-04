@@ -36,6 +36,9 @@ This project is about data structure that contains sequence list, linked list, s
 ####matrix
 --->[sparse_matrix](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/matrix/sparse_matrix)
 
+####general_list
+--->[general_list](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/general_list)
+
 ###Developping environment(in linux/windows/MacOS): 
 	sudo apt-get -y install gcc gdb make 
 
