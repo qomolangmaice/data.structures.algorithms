@@ -40,6 +40,7 @@ status add_matrix(sparse_matrix *m_matrix, sparse_matrix *n_matrix, sparse_matri
 status sub_matrix(sparse_matrix *m_matrix, sparse_matrix *n_matrix, sparse_matrix *t_matrix);
 status mul_matrix(sparse_matrix *m_matrix, sparse_matrix *n_matrix, sparse_matrix *t_matrix);
 status transpose_matrix(sparse_matrix *m_matrix, sparse_matrix *t_matrix);
+status fast_transpose_matrix(sparse_matrix *m_matrix, sparse_matrix *t_matrix);
 
 
 

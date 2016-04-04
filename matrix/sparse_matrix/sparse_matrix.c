@@ -38,11 +38,30 @@ status create_matrix(sparse_matrix *matrix)
 status print_matrix(sparse_matrix *matrix)
 {
 	printf("row=%d, col=%d\n", matrix->mu, matrix->nu);
+	int row, col;
+	int k = 0;
+	for(row=0; row<matrix->mu; row++)
+	{
+		for(col=0; col<matrix->nu; col++)
+		{
+			if(row == matrix->data[k].i && col == matrix->data[k].j)
+			{
+				printf("%4d", matrix->data[k].e);
+			 	k++;
+			}
+			else
+				printf("   0");
+		}
+		printf("\n");
+	}
+	printf("矩阵的三元组表示为：\n");
 	for(int i=0; i<matrix->tu; ++i)
 	{
-		printf("(%d, %d, %d)\n", matrix->data[i].i, matrix->data[i].j, matrix->data[i].e);
+		printf("(%d,%d,%d), ", matrix->data[i].i, matrix->data[i].j, matrix->data[i].e);
+		if(i == matrix->tu - 1)
+		 	printf("(%d,%d,%d)", matrix->data[i].i, matrix->data[i].j, matrix->data[i].e);
 	}
-	printf("\n");
+	printf("\n\n");
 	return OK;
 }
 
@@ -129,15 +148,45 @@ status transpose_matrix(sparse_matrix *m_matrix, sparse_matrix *t_matrix)
 	}
 }
 
+status fast_transpose_matrix(sparse_matrix *m_matrix, sparse_matrix *t_matrix)
+{
+ 	t_matrix->mu = m_matrix->nu;
+	t_matrix->nu = m_matrix->mu;
+	t_matrix->tu = m_matrix->tu;
 
+	int *num = (int*)malloc(sizeof(int) * m_matrix->tu);
+	assert(num != NULL);
+	int *cpot = (int*)malloc(sizeof(int) * m_matrix->nu); 	/* cpot: column position */
+	assert(cpot != NULL);
 
-
-
-
-
-
-
-
-
-
+	int col;
+	if(t_matrix->tu != 0)
+	{
+		for(col=0; col<m_matrix->nu; ++col)
+		{
+			num[col] = 0;
+		}
+		for(int t=0; t<m_matrix->tu; ++t)
+		{
+			num[m_matrix->data[t].j]++; 
+		}
+		cpot[0] = 0;
+		for(col=1; col<m_matrix->nu; ++col)
+		{
+			cpot[col] = cpot[col - 1] + num[col - 1];
+		}
+		int q = 0;
+		for(int p=0; p<m_matrix->tu; ++p)
+		{
+			col = m_matrix->data[p].j;
+			q = cpot[col];
+			t_matrix->data[q].i = m_matrix->data[p].j;
+			t_matrix->data[q].j = m_matrix->data[p].i;
+			t_matrix->data[q].e = m_matrix->data[p].e;
+			cpot[col]++;
+		}
+	}
+	free(num);
+	free(cpot);
+}
 

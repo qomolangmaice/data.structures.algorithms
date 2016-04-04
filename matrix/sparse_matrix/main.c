@@ -36,6 +36,8 @@ void main()
 	//printf("sm1和sm2矩阵相减后的新矩阵为:\n");
 	//print_matrix(&sm);
 
-	transpose_matrix(&sm1, &sm3);
+	//transpose_matrix(&sm1, &sm3);
+	printf("快速转置矩阵为:\n");
+	fast_transpose_matrix(&sm1, &sm3);
 	print_matrix(&sm3);
 }
