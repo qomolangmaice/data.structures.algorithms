@@ -34,16 +34,15 @@ typedef struct gl_node{ /* General list node */
 	struct gl_node *tail_p; /* general list tail pointer */
 } gl_node;
 
-typedef gl_node *gen_list;
+typedef gl_node* gen_list;
 
 status init_gen_list(gen_list &gl); 	/* gl is a reference in this C++ project */
-status create_gen_list(gen_list &gl, const char *str);
+status create_gen_list(gen_list &gl, char *str);
 status sever(char *sub, char *head_sub);
-
-
-
-
-
+status show_gen_list(gen_list &gl);
+status gen_list_empty(gen_list &gl);
+int gen_list_length(gen_list &gl);
+int gen_list_deepth(gen_list &gl);
 
 #endif
 
