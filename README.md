@@ -8,6 +8,8 @@ This project is about data structure that contains sequence list, linked list, s
 
 -->[link_list](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/linear_list/link_list)
 
+-->[static_link_list](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/linear_list/static_link_list)
+
 -->[circular_link_list](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/linear_list/circular_link_list)
 
 -->[double_link_list](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/linear_list/double_link_list)
