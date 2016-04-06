@@ -9,8 +9,11 @@
 #include "static_list.h"
 #include "static_list.c"
 
-void main()
+int main()
 {
+	/* int a = 10;
+	 * int &b = a;  // b is a reference to a 
+	 */
 	static_list slist;
 
 	init_list(slist); 	 	/* mylist is a refrence */

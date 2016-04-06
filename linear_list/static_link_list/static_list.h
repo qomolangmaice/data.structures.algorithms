@@ -26,10 +26,10 @@ typedef struct static_node {
 
 typedef static_node static_list[MAX_SIZE];
 
-int malloc_static_list(static_list space[]);
-status init_list(static_list space[]); 	/* space 表示引用 */
-status insert(static_list space[], elem_type val);
-status show_list(static_list space[]);
+int malloc_static_list(static_list &space);
+status init_list(static_list &space); 	/* space 表示引用 */
+status insert(static_list &space, elem_type val);
+status show_list(static_list &space);
 
 #endif
 

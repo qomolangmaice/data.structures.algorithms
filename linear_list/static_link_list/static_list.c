@@ -5,7 +5,7 @@
 * Email: qomolangmaice@163.com 
 * Created: 2016.03.17 19:49:32
 */
-int malloc_static_list(static_list space[])
+int malloc_static_list(static_list &space)
 {
 	int i = space[1].cur;
 	if(space[1].cur != 0)
@@ -13,7 +13,7 @@ int malloc_static_list(static_list space[])
 	return i;
 }
 
-status init_list(static_list space[])
+status init_list(static_list &space)
 {
 	for(int i=0; i<MAX_SIZE-1; ++i)
 	{
@@ -24,7 +24,7 @@ status init_list(static_list space[])
 	return OK;
 }
 
-status insert(static_list space[], elem_type val)
+status insert(static_list &space, elem_type val)
 {
 	int i = malloc_static_list(space);
 	if(i == 0)
@@ -46,7 +46,7 @@ status insert(static_list space[], elem_type val)
 	space[0].cur = i;
 }
 
-status show_list(static_list space[])
+status show_list(static_list &space)
 {
 	int i = space[0].cur;
 	while(i != -1)
