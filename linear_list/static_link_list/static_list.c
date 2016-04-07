@@ -13,9 +13,16 @@ int malloc_static_list(static_list &space)
 	return i;
 }
 
+status free_static_list(static_list &space, int k)
+{
+	space[k].cur = space[1].cur;
+	space[1].cur = k;
+	return OK;
+}
+
 status init_list(static_list &space)
 {
-	for(int i=0; i<MAX_SIZE-1; ++i)
+	for(int i=1; i<MAX_SIZE-1; ++i)
 	{
  	 	space[i].cur = i + 1;
 	}
@@ -44,6 +51,14 @@ status insert(static_list &space, elem_type val)
 		space[i].cur = space[0].cur;
 	}
 	space[0].cur = i;
+}
+
+status delete_node(static_list &space)
+{
+	int i = space[0].cur;
+	space[0].cur = space[i].cur;
+
+	free_static_list(space, i);
 }
 
 status show_list(static_list &space)

@@ -22,4 +22,6 @@ int main()
 		insert(slist, 'A' + i);
 
 	show_list(slist);
+	delete_node(slist);
+	show_list(slist);
 }
