@@ -41,6 +41,10 @@ This project is about data structure that contains sequence list, linked list, s
 ####general_list
 --->[general_list](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/general_list)
 
+####tree
+--->[binary_tree](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/tree/binary_tree)
+
+
 ###Developping environment(in linux/windows/MacOS): 
 	sudo apt-get -y install gcc gdb make 
 
