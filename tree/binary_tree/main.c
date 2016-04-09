@@ -15,8 +15,23 @@ int main()
 
 	init_bin_tree(&mytree, '#');
 
-	/* ABC#DE##F##G#H# */
-	create_bin_tree_A(&mytree);
-	create_bin_tree_B(&mytree);
-	create_bin_tree_C(&mytree);
+	/* ABC#DE##F##G#H## */
+	//create_bin_tree_A(&mytree);
+	//create_bin_tree_B(&mytree);
+	//create_bin_tree_C(&mytree);
+	
+	const char *str = "ABC##DE##F##G#H##";
+	create_bin_tree_D(&mytree, str);
+
+	printf("Previous order visit binary tree: ");
+	pre_order_visit(&mytree);
+	printf("\n");
+
+	printf("In order visit binary tree:" );
+	in_order_visit(&mytree);
+	printf("\n");
+
+	printf("Post order visit binary tree: ");
+	post_order_visit(&mytree);
+	printf("\n");
 }

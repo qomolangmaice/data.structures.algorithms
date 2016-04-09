@@ -28,6 +28,7 @@ typedef struct bin_tree{
 } bin_tree;
 
 status init_bin_tree(bin_tree *bt, elem_type ref);
+
 status create_bin_tree_A(bin_tree *bt);
 status create_bin_tree_a(bin_tree *bt, bin_tree_node **t);
 
@@ -35,4 +36,20 @@ status create_bin_tree_B(bin_tree *bt);
 status create_bin_tree_b(bin_tree *bt, bin_tree_node *&t);
 
 status create_bin_tree_C(bin_tree *bt);
-bin_tree_node* create_bin_tree_C_(bin_tree *bt);
+bin_tree_node* create_bin_tree_C_(bin_tree *bt); 	/* Reload */
+
+status create_bin_tree_D(bin_tree *bt, const char *str);
+status create_bin_tree_d(bin_tree *bt, bin_tree_node *&t, const char *&str);
+
+/**************************************************************************************/
+status pre_order_visit(bin_tree *bt);
+status pre_order_visit_(bin_tree_node *t);
+
+status in_order_visit(bin_tree *bt);
+status in_order_visit_(bin_tree_node *t);
+
+status post_order_visit(bin_tree *bt);
+status post_order_visit_(bin_tree_node *t);
+
+
+
