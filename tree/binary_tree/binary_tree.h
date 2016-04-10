@@ -59,8 +59,14 @@ status paint_tree_(bin_tree_node *t, int nlayer);
 
 /**************************************************************************************/
 int bin_tree_count(bin_tree *bt);
+int bin_tree_count_(bin_tree_node *t);
+
 int bin_tree_height(bin_tree *bt);
+int bin_tree_height_(bin_tree_node *t);
+
 bin_tree_node* search_node(bin_tree *bt, elem_type key);
+bin_tree_node* search_node_(bin_tree_node *t, elem_type key);
+
 bin_tree_node* search_parent(bin_tree *bt, bin_tree_node *p);
 bin_tree_node* search_left_child(bin_tree *bt);
 bin_tree_node* search_right_child(bin_tree *bt);

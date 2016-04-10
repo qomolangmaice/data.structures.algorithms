@@ -19,9 +19,6 @@ int main()
 	//printf("Please input binary tree original data: \n");
 	//create_bin_tree_A(&mytree);
 
-	//printf("Paint binary tree in tree shape: \n");
-	//paint_tree(&mytree);
-	
 	//create_bin_tree_B(&mytree);
 	//create_bin_tree_C(&mytree);
 	
@@ -29,6 +26,9 @@ int main()
 	printf("Input original tree data: %s\n", str);
 
 	create_bin_tree_D(&mytree, str);
+
+	printf("Paint binary tree in tree shape: \n");
+	paint_tree(&mytree);
 
 	printf("Previous order visit binary tree: ");
 	pre_order_visit(&mytree);
@@ -46,5 +46,11 @@ int main()
 	level_order_visit(&mytree);
 	printf("\n");
 
- 	printf("The binary tree counts is: %d\n", bin_tree_count(&mytree));
+ 	printf("The counts of the binary tree is: %d\n", bin_tree_count(&mytree));
+ 	printf("The height of the binary tree is: %d\n", bin_tree_height(&mytree));
+ 	bin_tree_node *p = search_node(&mytree, 'B');
+	if(p == NULL)
+		printf("The node 'B' is not found\n");
+	else
+	 	printf("search the node 'B' is done\n");
 }

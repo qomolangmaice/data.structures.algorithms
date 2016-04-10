@@ -202,6 +202,11 @@ status paint_tree_(bin_tree_node *t, int nlayer)
 	}
 }
 
+int bin_tree_count(bin_tree *bt)
+{
+	return bin_tree_count_(bt->root);
+}
+
 int bin_tree_count_(bin_tree_node *t)
 {
  	if(t == NULL)
@@ -210,10 +215,51 @@ int bin_tree_count_(bin_tree_node *t)
 		return bin_tree_count_(t->left_child) + bin_tree_count_(t->right_child) + 1;
 }
 
-int bin_tree_count(bin_tree *bt)
+int bin_tree_height(bin_tree *bt)
 {
-	return bin_tree_count_(bt->root);
+	return bin_tree_height_(bt->root);
 }
+
+int bin_tree_height_(bin_tree_node *t)
+{
+	if(t == NULL)
+		return 0;
+	else
+	{
+		int left_height = bin_tree_height_(t->left_child); 
+		int right_height = bin_tree_height_(t->right_child);
+		return (left_height > right_height ? left_height : right_height) + 1;
+	}
+}
+
+bin_tree_node* search_node(bin_tree *bt, elem_type key)
+{
+ 	return search_node_(bt->root, key);
+}
+
+bin_tree_node* search_node_(bin_tree_node *t, elem_type key)
+{
+	if(t == NULL)
+		return NULL;
+	if(t->data == key)
+		return t;
+	bin_tree_node *p = search_node_(t->left_child, key);
+	if(p != NULL)
+		return p;
+	return search_node_(t->right_child, key);
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
