@@ -202,6 +202,22 @@ status paint_tree_(bin_tree_node *t, int nlayer)
 	}
 }
 
+int bin_tree_count_(bin_tree_node *t)
+{
+ 	if(t == NULL)
+		return 0;
+	else
+		return bin_tree_count_(t->left_child) + bin_tree_count_(t->right_child) + 1;
+}
+
+int bin_tree_count(bin_tree *bt)
+{
+	return bin_tree_count_(bt->root);
+}
+
+
+
+
 
 
 
