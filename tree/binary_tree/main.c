@@ -16,12 +16,18 @@ int main()
 	init_bin_tree(&mytree, '#');
 
 	/* ABC#DE##F##G#H## */
-	//create_bin_tree_A(&mytree);
+	printf("Please input binary tree original data: \n");
+	create_bin_tree_A(&mytree);
+
+	printf("Paint binary tree in tree shape: \n");
+	paint_tree(&mytree);
 	//create_bin_tree_B(&mytree);
 	//create_bin_tree_C(&mytree);
 	
-	const char *str = "ABC##DE##F##G#H##";
-	create_bin_tree_D(&mytree, str);
+	//const char *str = "ABC##DE##F##G#H##";
+	//printf("Input original tree data: %s\n", str);
+
+	//create_bin_tree_D(&mytree, str);
 
 	printf("Previous order visit binary tree: ");
 	pre_order_visit(&mytree);
@@ -33,5 +39,9 @@ int main()
 
 	printf("Post order visit binary tree: ");
 	post_order_visit(&mytree);
+	printf("\n");
+
+	printf("Level order visit binary tree: ");
+	level_order_visit(&mytree);
 	printf("\n");
 }

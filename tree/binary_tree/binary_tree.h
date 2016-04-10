@@ -51,5 +51,10 @@ status in_order_visit_(bin_tree_node *t);
 status post_order_visit(bin_tree *bt);
 status post_order_visit_(bin_tree_node *t);
 
+status level_order_visit(bin_tree *bt);
+status level_order_visit_(bin_tree_node *t);
+
+status paint_tree(bin_tree *bt);
+status paint_tree_(bin_tree_node *t, int nlayer);
 
 

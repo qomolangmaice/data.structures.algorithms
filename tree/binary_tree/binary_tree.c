@@ -5,6 +5,8 @@
  *  Email: qomolangmaice@163.com 
  *  Created: 2016.04.08 21:37:11
  */
+#include "link_queue/link_queue.h"
+#include "link_queue/link_queue.c"
 
 status init_bin_tree(bin_tree *bt, elem_type ref)
 {
@@ -154,16 +156,51 @@ status post_order_visit_(bin_tree_node *t)
 	return OK;
 }
 
+status level_order_visit(bin_tree *bt)
+{
+	level_order_visit_(bt->root);
+	return OK;
+}
 
+status level_order_visit_(bin_tree_node *t)
+{
+	if(t != NULL)
+	{
+		bin_tree_node *v;
+		link_queue queue;
+		init_queue(&queue);
+		en_queue(&queue, t);
 
+		while(!queue_is_empty(&queue))
+		{
+			get_head(&queue, &v);
+			de_queue(&queue);
+			printf("%c ", v->data);
+			if(v->left_child != NULL)
+				en_queue(&queue, v->left_child);
+			if(v->right_child != NULL)
+				en_queue(&queue, v->right_child);
+		}
+	}
+}
 
+status paint_tree(bin_tree *bt)
+{
+	paint_tree_(bt->root, 0);
+	return OK;
+}
 
-
-
-
-
-
-
+status paint_tree_(bin_tree_node *t, int nlayer)
+{
+	if(t != NULL)
+	{
+		paint_tree_(t->right_child, nlayer + 3);
+		for(int i=0; i<nlayer; i++)
+			printf("  ");
+		printf("%c\n", t->data);
+		paint_tree_(t->left_child, nlayer + 3);
+	}
+}
 
 
 
