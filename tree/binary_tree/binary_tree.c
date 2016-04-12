@@ -106,6 +106,29 @@ status create_bin_tree_d(bin_tree *bt, bin_tree_node *&t, const char *&str)
 	return OK;
 }
 
+/*
+status create_bin_tree_D(bin_tree *bt, char *str)
+{
+	create_bin_tree_d(bt, &(bt->root), str);
+	return OK;
+}
+
+status create_bin_tree_d(bin_tree *bt, bin_tree_node **t, char *str)
+{
+	if((*str) == bt->refvalue)
+		*t = NULL;
+	else
+	{
+		*t = (bin_tree_node*)malloc(sizeof(bin_tree_node));
+		assert((*t) != NULL);
+		(*t)->data = *str;
+		create_bin_tree_d(bt, &((*t)->left_child), ++(str));
+		create_bin_tree_d(bt, &((*t)->right_child), ++(str));
+	}
+	return OK;
+}
+*/
+
 status pre_order_visit(bin_tree *bt)
 {
 	pre_order_visit_(bt->root);
@@ -243,28 +266,97 @@ bin_tree_node* search_node_(bin_tree_node *t, elem_type key)
 		return NULL;
 	if(t->data == key)
 		return t;
+
+	/* search the node in the left_child tree */
 	bin_tree_node *p = search_node_(t->left_child, key);
 	if(p != NULL)
 		return p;
+
+	/* 
+	 * If it can't find the node in the lef_child tree, 
+	 * then search the node in the right_child tree 
+	 */
 	return search_node_(t->right_child, key);
 }
 
+bin_tree_node* search_parent(bin_tree *bt, bin_tree_node *p)
+{
+	return search_parent_(bt->root, p);
+}
 
+bin_tree_node* search_parent_(bin_tree_node *t, bin_tree_node *p)
+{
+	if(t == NULL || p == NULL)
+		return NULL;
 
+	/* the root node is the parent node */
+ 	if(t->left_child == p || t->right_child == p)
+		return t;
 
+	/* search the parent node in the left_child tree */
+	bin_tree_node *q = search_parent_(t->left_child, p);
+	if(q != NULL)
+		return q;
+	/* 
+	 * If it can't find the parent node in the lef_child tree, 
+	 * then search the parent node in the right_child tree 
+	 */
+	return search_parent_(t->right_child, p);
+}
 
+bin_tree_node* search_left_child(bin_tree_node *p)
+{
+	if(p != NULL)
+		return p->left_child;
+	return NULL;
+}
 
+bin_tree_node* search_right_child(bin_tree_node *p)
+{
+	if(p != NULL)
+		return p->right_child;
+	return NULL;
+}
 
+status bin_tree_empty(bin_tree *bt)
+{
+ 	return bt->root == NULL;
+}
 
+status copy_bin_tree(bin_tree *bt1, bin_tree *bt2)
+{
+	copy_bin_tree_(&(bt1->root), &(bt2->root));
+	return OK;
+}
 
+status copy_bin_tree_(bin_tree_node **t1, bin_tree_node **t2)
+{
+	if((*t2) == NULL)
+		*t1 = NULL;
+	else
+	{
+ 	 	(*t1) = (bin_tree_node*)malloc(sizeof(bin_tree_node));
+		assert((*t1) != NULL);
+		(*t1)->data = (*t2)->data;
+		copy_bin_tree_(&((*t1)->left_child), &((*t2)->left_child));
+		copy_bin_tree_(&((*t1)->right_child), &((*t2)->right_child));
+	}
+}
 
+status bin_tree_clear(bin_tree *bt)
+{
+	bin_tree_clear_(&(bt->root));
+}
 
-
-
-
-
-
-
-
+status bin_tree_clear_(bin_tree_node **t)
+{
+	if((*t) != NULL)
+	{
+		bin_tree_clear_(&((*t)->left_child));
+		bin_tree_clear_(&((*t)->right_child));
+		free((*t));
+		(*t) = NULL;
+	}
+}
 
 
