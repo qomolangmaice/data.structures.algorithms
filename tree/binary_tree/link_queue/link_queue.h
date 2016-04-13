@@ -15,12 +15,13 @@
 #define FALSE 0
 
 struct bin_tree_node;
-#define e_type bin_tree_node*
-//typedef int e_type;
+//#define q_elem_type bin_tree_node*
+//typedef int elem_type;
+typedef bin_tree_node* q_elem_type;
 typedef int status;
 
 typedef struct queue_node {
- 	e_type data;
+ 	q_elem_type data;
 	struct queue_node *next;
 } queue_node; 
 
@@ -31,10 +32,10 @@ typedef struct link_queue{
 
 status init_queue(link_queue *queue);
 status queue_is_empty(link_queue *queue);
-status en_queue(link_queue *queue, e_type val);
-//status de_queue(link_queue *queue, e_type *p_val);
+status en_queue(link_queue *queue, q_elem_type val);
+//status de_queue(link_queue *queue, q_elem_type *p_val);
 status de_queue(link_queue *queue);
-status get_head(link_queue *queue, e_type *p_val);
+status get_head(link_queue *queue, q_elem_type *p_val);
 int get_length(link_queue *queue);
 status show_queue(link_queue *queue);
 status clear_queue(link_queue *queue);

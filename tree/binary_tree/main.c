@@ -23,7 +23,6 @@ int main()
 	//create_bin_tree_C(&mytree);
 	
 	const char *str = "ABC##DE##F##G#H##";
-	//char *str = "ABC##DE##F##G#H##";
 	printf("Input original tree data: %s\n", str);
 
 	create_bin_tree_D(&mytree, str);
@@ -31,17 +30,26 @@ int main()
 	printf("Paint binary tree in tree shape: \n");
 	paint_tree(&mytree);
 
-	printf("Previous order visit binary tree: ");
+	printf("Previous order visit(recursion method) binary tree: ");
 	pre_order_visit(&mytree);
 	printf("\n");
+ 	printf("Previous order visit(none recursion method) binary tree: ");
+	nr_pre_order_visit(&mytree);
+	printf("\n");
 
-	printf("In order visit binary tree:" );
+	printf("In order visit(recursion method) binary tree:" );
 	in_order_visit(&mytree);
 	printf("\n");
+ 	//printf("In order visit(none recursion method) binary tree:" );
+	//nr_in_order_visit(&mytree);
+	//printf("\n");
 
-	printf("Post order visit binary tree: ");
+	printf("Post order visit(recursion method)binary tree: ");
 	post_order_visit(&mytree);
 	printf("\n");
+ 	//printf("Post order visit(none recursion method)binary tree: ");
+	//nr_post_order_visit(&mytree);
+	//printf("\n");
 
 	printf("Level order visit binary tree: ");
 	level_order_visit(&mytree);

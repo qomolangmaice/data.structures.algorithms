@@ -7,6 +7,8 @@
  */
 #include "link_queue/link_queue.h"
 #include "link_queue/link_queue.c"
+#include "seq_stack/seq_stack.h"
+#include "seq_stack/seq_stack.c"
 
 status init_bin_tree(bin_tree *bt, elem_type ref)
 {
@@ -105,29 +107,6 @@ status create_bin_tree_d(bin_tree *bt, bin_tree_node *&t, const char *&str)
 	}
 	return OK;
 }
-
-/*
-status create_bin_tree_D(bin_tree *bt, char *str)
-{
-	create_bin_tree_d(bt, &(bt->root), str);
-	return OK;
-}
-
-status create_bin_tree_d(bin_tree *bt, bin_tree_node **t, char *str)
-{
-	if((*str) == bt->refvalue)
-		*t = NULL;
-	else
-	{
-		*t = (bin_tree_node*)malloc(sizeof(bin_tree_node));
-		assert((*t) != NULL);
-		(*t)->data = *str;
-		create_bin_tree_d(bt, &((*t)->left_child), ++(str));
-		create_bin_tree_d(bt, &((*t)->right_child), ++(str));
-	}
-	return OK;
-}
-*/
 
 status pre_order_visit(bin_tree *bt)
 {
@@ -358,5 +337,55 @@ status bin_tree_clear_(bin_tree_node **t)
 		(*t) = NULL;
 	}
 }
+
+/* None recursion visit binary tree */
+status nr_pre_order_visit(bin_tree *bt)
+{
+	nr_pre_order_visit_(bt->root);
+	return OK;
+}
+
+status nr_pre_order_visit_(bin_tree_node *t)
+{
+	if(t != NULL)
+	{
+		seq_stack st;
+		init_stack(&st);
+
+		bin_tree_node *p;
+		push(&st, t);
+		while(!stack_is_empty(&st))
+		{
+			get_top(&st, &p);
+			pop(&st);
+			printf("%c ", p->data);
+			if(p->right_child != NULL)
+				push(&st, p->right_child);
+			if(p->left_child != NULL)
+				push(&st, p->left_child);
+		}
+	}
+}
+
+//status nr_in_order_visit(bin_tree *bt)
+//{
+//	nr_in_order_visit_(bt->root);
+//	return OK;
+//}
+//status nr_in_order_visit_(bin_tree_node *t)
+//
+//status nr_post_order_visit(bin_tree *bt);
+//status nr_post_order_visit_(bin_tree_node *t);
+
+
+
+
+
+
+
+
+
+
+
 
 

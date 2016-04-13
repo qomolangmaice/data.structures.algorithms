@@ -41,10 +41,6 @@ bin_tree_node* create_bin_tree_C_(bin_tree *bt); 	/* Reload */
 status create_bin_tree_D(bin_tree *bt, const char *str);
 status create_bin_tree_d(bin_tree *bt, bin_tree_node *&t, const char *&str);
 
-/*
-status create_bin_tree_D(bin_tree *bt, char *str);
-status create_bin_tree_d(bin_tree *bt, bin_tree_node **t, const char *str);
-*/
 /**************************************************************************************/
 status pre_order_visit(bin_tree *bt);
 status pre_order_visit_(bin_tree_node *t);
@@ -84,8 +80,14 @@ status copy_bin_tree_(bin_tree_node **t1, bin_tree_node **t2);
 status bin_tree_clear(bin_tree *bt);
 status bin_tree_clear_(bin_tree_node **t);
 
+/**************************************************************************************/
+/* None recursion visit binary tree */
+status nr_pre_order_visit(bin_tree *bt);
+status nr_pre_order_visit_(bin_tree_node *t);
 
+status nr_in_order_visit(bin_tree *bt);
+status nr_in_order_visit_(bin_tree_node *t);
 
-
-
+status nr_post_order_visit(bin_tree *bt);
+status nr_post_order_visit_(bin_tree_node *t);
 

@@ -23,7 +23,7 @@ status queue_is_empty(link_queue *queue)
 		return FALSE;
 }
 
-status en_queue(link_queue *queue, e_type val)
+status en_queue(link_queue *queue, q_elem_type val)
 {
 	queue_node *s = (queue_node*)malloc(sizeof(queue_node)); 
 	assert(s != NULL);
@@ -35,7 +35,7 @@ status en_queue(link_queue *queue, e_type val)
 	return OK;
 }
 
-//status de_queue(link_queue *queue, e_type *p_val)
+//status de_queue(link_queue *queue, q_elem_type *p_val)
 status de_queue(link_queue *queue)
 {
 	if(queue_is_empty(queue))
@@ -51,7 +51,7 @@ status de_queue(link_queue *queue)
 	return OK;
 }
 
-status get_head(link_queue *queue, e_type *p_val)
+status get_head(link_queue *queue, q_elem_type *p_val)
 {
 	if(queue_is_empty(queue))
 		return ERROR;
