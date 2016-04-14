@@ -367,15 +367,45 @@ status nr_pre_order_visit_(bin_tree_node *t)
 	}
 }
 
-//status nr_in_order_visit(bin_tree *bt)
-//{
-//	nr_in_order_visit_(bt->root);
-//	return OK;
-//}
-//status nr_in_order_visit_(bin_tree_node *t)
-//
-//status nr_post_order_visit(bin_tree *bt);
-//status nr_post_order_visit_(bin_tree_node *t);
+status nr_in_order_visit(bin_tree *bt)
+{
+	nr_in_order_visit_(bt->root);
+	return OK;
+}
+
+status nr_in_order_visit_(bin_tree_node *t)
+{
+ 	if(t != NULL)
+	{
+		seq_stack st;
+		init_stack(&st);
+
+	  	bin_tree_node *p;	
+		push(&st, t);
+		while(!stack_is_empty(&st))
+		{
+			while(t != NULL && t->left_child != NULL)
+			{
+				push(&st, t->left_child);
+				t = t->left_child;
+			}
+
+			get_top(&st, &p);
+			pop(&st);
+			printf("%c ", p->data);
+
+			if(p->right_child != NULL)
+			{
+				t = p->right_child;
+				if(t != NULL)
+					push(&st, t);
+			}
+		}
+	}
+}
+
+status nr_post_order_visit(bin_tree *bt)
+status nr_post_order_visit_(bin_tree_node *t)
 
 
 

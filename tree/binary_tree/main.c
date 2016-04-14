@@ -33,16 +33,16 @@ int main()
 	printf("Previous order visit(recursion method) binary tree: ");
 	pre_order_visit(&mytree);
 	printf("\n");
- 	printf("Previous order visit(none recursion method) binary tree: ");
+ 	printf("Previous order visit(non recursion method) binary tree: ");
 	nr_pre_order_visit(&mytree);
 	printf("\n");
 
 	printf("In order visit(recursion method) binary tree:" );
 	in_order_visit(&mytree);
 	printf("\n");
- 	//printf("In order visit(none recursion method) binary tree:" );
-	//nr_in_order_visit(&mytree);
-	//printf("\n");
+ 	printf("In order visit(non recursion method) binary tree:" );
+	nr_in_order_visit(&mytree);
+	printf("\n");
 
 	printf("Post order visit(recursion method)binary tree: ");
 	post_order_visit(&mytree);

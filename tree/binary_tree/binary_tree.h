@@ -81,7 +81,7 @@ status bin_tree_clear(bin_tree *bt);
 status bin_tree_clear_(bin_tree_node **t);
 
 /**************************************************************************************/
-/* None recursion visit binary tree */
+/* Non recursion visit binary tree */
 status nr_pre_order_visit(bin_tree *bt);
 status nr_pre_order_visit_(bin_tree_node *t);
 
