@@ -66,7 +66,7 @@ status get_top(seq_stack *stack, s_elem_type *p_val)
 	return OK;
 }
 
-int get_length(seq_stack *stack)
+int get_stack_length(seq_stack *stack)
 {
 	return stack->top - stack->base;
 }

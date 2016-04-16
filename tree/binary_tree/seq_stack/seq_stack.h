@@ -39,7 +39,7 @@ status push(seq_stack *stack, s_elem_type val);
 //status pop(seq_stack *stack, s_elem_type *p_val);
 status pop(seq_stack *stack);
 status get_top(seq_stack *stack, s_elem_type *p_val);
-int get_length(seq_stack *stack);
+int get_stack_length(seq_stack *stack);
 status show_stack(seq_stack *stack);
 status clear_stack(seq_stack *stack);
 status destroy_stack(seq_stack *stack);

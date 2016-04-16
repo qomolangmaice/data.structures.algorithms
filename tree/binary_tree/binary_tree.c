@@ -43,23 +43,23 @@ status create_bin_tree_a(bin_tree *bt, bin_tree_node **t)
 
 status create_bin_tree_B(bin_tree *bt)
 {
- 	create_bin_tree_b(bt, bt->root);
+ 	create_bin_tree_b(bt, &(bt->root));
 	return OK;
 }
 
-status create_bin_tree_b(bin_tree *bt, bin_tree_node *&t)
+status create_bin_tree_b(bin_tree *bt, bin_tree_node **t)
 {
 	elem_type item;
 	scanf("%c", &item);
 	if(item == bt->refvalue)
-		t = NULL;
+		*t = NULL;
 	else
 	{
-		t = (bin_tree_node*)malloc(sizeof(bin_tree_node));
-		assert(t != NULL);
-		t->data = item;
-		create_bin_tree_b(bt, t->left_child);
-		create_bin_tree_b(bt, t->right_child);
+		*t = (bin_tree_node*)malloc(sizeof(bin_tree_node));
+		assert((*t) != NULL);
+		(*t)->data = item;
+		create_bin_tree_b(bt, &((*t)->left_child));
+		create_bin_tree_b(bt, &((*t)->right_child));
 	}
 	return OK;
 }
@@ -87,23 +87,23 @@ bin_tree_node* create_bin_tree_C_(bin_tree *bt)
 	}
 }
 
-status create_bin_tree_D(bin_tree *bt, const char *str)
+status create_bin_tree_D(bin_tree *bt, char *str)
 {
-	create_bin_tree_d(bt, bt->root, str);
+	create_bin_tree_d(bt, &(bt->root), &str);
 	return OK;
 }
 
-status create_bin_tree_d(bin_tree *bt, bin_tree_node *&t, const char *&str)
+status create_bin_tree_d(bin_tree *bt, bin_tree_node **t, char **str)
 {
-	if(*str == bt->refvalue)
+	if(**str == bt->refvalue)
 		t = NULL;
 	else
 	{
-		t = (bin_tree_node*)malloc(sizeof(bin_tree_node));
-		assert(t != NULL);
-		t->data = *str;
-		create_bin_tree_d(bt, t->left_child, ++str);
-		create_bin_tree_d(bt, t->right_child, ++str);
+		*t = (bin_tree_node*)malloc(sizeof(bin_tree_node));
+		assert((*t) != NULL);
+		(*t)->data = **str;
+		create_bin_tree_d(bt, &((*t)->left_child), &(++*str)); 
+		create_bin_tree_d(bt, &((*t)->right_child), &(++*str));
 	}
 	return OK;
 }
@@ -404,13 +404,58 @@ status nr_in_order_visit_(bin_tree_node *t)
 	}
 }
 
-status nr_post_order_visit(bin_tree *bt)
-status nr_post_order_visit_(bin_tree_node *t)
+/* 根据二叉树的先序遍历字符串数据(VLR)和中序遍历字符串数据(LVR)恢复创建二叉树 */
+status create_bin_tree_E(bin_tree *bt, char *VLR, char *LVR, int n)
+{
+	create_bin_tree_e(&(bt->root), VLR, LVR, n);
+}
 
+status create_bin_tree_e(bin_tree_node **t, char *VLR, char *LVR, int n)
+{
+	if(n == 0)
+		*t = NULL;
+	else
+	{
+		int k = 0;
+		/* 在中序序列LVR中找到先序序列VLR中的根节点数据 */
+		while(VLR[0] != LVR[k])
+			k++;
 
+		*t = (bin_tree_node*)malloc(sizeof(bin_tree_node));
+		assert((*t) != NULL);
+		(*t)->data = LVR[k];
 
+		create_bin_tree_e(&((*t)->left_child), VLR+1, LVR, k);
+		create_bin_tree_e(&((*t)->right_child), VLR+k+1, LVR+k+1, n-k-1);
+	}
+}
 
+/* 根据二叉树的后序遍历字符串数据(VLR)和中序遍历字符串数据(LVR)恢复创建二叉树 */
+status create_bin_tree_F(bin_tree *bt, char *LVR, char *LRV, int n)
+{
+	create_bin_tree_f(&(bt->root), LVR, LRV, n);
+}
 
+status create_bin_tree_f(bin_tree_node **t, char *LVR, char *LRV, int n)
+{
+ 	if(n == 0)
+		*t = NULL;
+	else
+	{
+		int k = 0;
+
+		/* 在中序序列LVR中找到后序序列LRV中的根节点数据 */
+		while(LRV[n-1] != LVR[k])
+			k++;
+
+		*t = (bin_tree_node*)malloc(sizeof(bin_tree_node));
+		assert((*t) != NULL);
+		(*t)->data = LVR[k];
+
+		create_bin_tree_f(&((*t)->right_child), LVR+k+1, LRV+k, n-k-1);
+		create_bin_tree_f(&((*t)->left_child), LVR, LRV, k);
+	}
+}
 
 
 

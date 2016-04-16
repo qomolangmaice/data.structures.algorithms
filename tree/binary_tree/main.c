@@ -22,7 +22,8 @@ int main()
 	//create_bin_tree_B(&mytree);
 	//create_bin_tree_C(&mytree);
 	
-	const char *str = "ABC##DE##F##G#H##";
+	//const char *str = "ABC##DE##F##G#H##";
+	char *str = "ABC##DE##F##G#H##";
 	printf("Input original tree data: %s\n", str);
 
 	create_bin_tree_D(&mytree, str);
