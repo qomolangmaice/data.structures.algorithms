@@ -37,17 +37,31 @@ void create_bin_tree_(bin_tree *bt, bin_tree_node **t, char **str)
 
 void create_in_thread(bin_tree *bt)
 {
-	bin_thred_node *pre = NULL;
-	create_in_thread_(bt->root, pre);
+	bin_tree_node *pre = NULL;
+	create_in_thread_(&(bt->root), &pre);
 }
 
+/* 创建中序线索化二叉树 */
 void create_in_thread_(bin_tree_node **t, bin_tree_node **pre)
 {
-	if(t == NULL)
+	if((*t) == NULL)
 		return;
-	else
+	create_in_thread_(&((*t)->left_child), pre);
+	if((*t)->left_child == NULL)
 	{
+		/* 找到中序线索化起始节点,即左子树为空，于是将该节点的左标记修改为线索 */
+		(*t)->ltag = THREAD;
+
+		/* 找到中序线索化起始节点后将该节点的左子树前驱赋空 */
+		(*t)->left_child = *pre;
 	}
+	if((*pre) != NULL && (*pre)->left_child == NULL)
+	{
+		(*pre)->rtag = THREAD;
+		(*pre)->right_child = *t;
+	}
+	*pre = *t;
+	create_in_thread_(&(*t)->right_child, pre);
 }
 
 

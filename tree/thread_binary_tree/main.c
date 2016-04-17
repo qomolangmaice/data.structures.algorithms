@@ -17,4 +17,6 @@ int main()
 
 	init_bin_tree(&mytree, '#');
 	create_bin_tree(&mytree, str);
+
+	create_in_thread(&mytree);
 }
