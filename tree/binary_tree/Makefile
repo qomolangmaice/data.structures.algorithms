@@ -3,14 +3,18 @@ CC = g++
 all:
 	$(CC) -o main main.c
 
-recovery_bin_tree:
-	$(CC) -o recovery_bin_tree recovery_bin_tree.c
-
 debug:
-	$(CC) -g -o main main.c
+	$(CC) -g -gdwarf-2 -gstrict-dwarf -o main main.c
+
+insight:
+	make debug
+	/usr/local/insight/bin/insight main
+
+recorery_binary_tree:
+	$(CC) -o recorery_binary_tree recorery_binary_tree.c
 
 count:
 	find . -type f -name "*.[c|h]" -exec cat {} \; | wc -l 
 
 clean:
-	rm main recovery_bin_tree
+	rm main recorery_binary_tree  

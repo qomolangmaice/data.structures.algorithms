@@ -1,17 +1,20 @@
-
-
 CC = gcc
-
-#SOURCE = $(wildcard *.c)
 
 all:
 	$(CC) -o main main.c
 
 debug:
-	$(CC) -g -o main main.c
+	$(CC) -g -gdwarf-2 -gstrict-dwarf -o main main.c
 
-merge:
-	$(CC) -o merge merge_list.c
+insight:
+	make debug
+	/usr/local/insight/bin/insight main
+
+#merge:
+#	$(CC) -o merge_list merge_list.c
 
 count:
-	find . -type f -name "*.[c|h]" -exec cat {} \; | wc -l
+	find . -type f -name "*.[c|h]" -exec cat {} \; | wc -l 
+
+clean:
+	rm main 
