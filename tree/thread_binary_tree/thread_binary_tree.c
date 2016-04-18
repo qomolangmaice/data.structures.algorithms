@@ -64,12 +64,81 @@ void create_in_thread_(bin_tree_node **t, bin_tree_node **pre)
 	create_in_thread_(&(*t)->right_child, pre);
 }
 
+bin_tree_node* first_node(bin_tree *bt)
+{
+	return first_node_(bt->root);
+}
 
+bin_tree_node* first_node_(bin_tree_node *t)
+{
+	if(t == NULL)
+		return NULL;
+	bin_tree_node *p = t;
+ 	while(p->ltag == LINK)
+		p = p->left_child;
+	return p;
+}
 
+/*
+bin_tree_node* last_node(bin_tree *bt)
+{
+	return last_node_(bt->root);
+}
 
+bin_tree_node* last_node_(bin_tree_node *t)
+{
+	if(t == NULL)
+		return NULL;
+	bin_tree_node *p = t;
+	while(p->rtag == LINK)
+		p = p->right_child;
+	return p;
+}
 
+bin_tree_node* next_node(bin_tree *bt, bin_tree_node *cur)
+{
+	return next_node_(bt->root, cur);
+}
 
+bin_tree_node* next_node_(bin_tree_node *t, bin_tree_node *cur)
+{
+	if(t == NULL || cur == NULL)
+ 	 	return NULL;
+	if(t->rtag == THREAD)
+		return cur->right_child; 
+	return first_node_(cur->right_child);
+}
 
+bin_tree_node* prio_node(bin_tree *bt, bin_tree_node *cur)
+{
+	return prio_node_(bt->root, cur);
+}
+
+bin_tree_node* prio_node_(bin_tree_node *t, bin_tree_node *cur)
+{
+	if(t == NULL || cur == NULL)
+		return NULL;
+	if(cur->ltag == THREAD)
+		return cur->left_child;
+	return last_node(cur->left_child);
+}
+
+void in_order_visit(bin_tree *bt)
+{
+	in_order_visit_(bt->root);
+}
+
+void in_order_visit_(bin_tree_node *t)
+{
+	bin_tree_node *p;
+	for(p = first_node(t); p!=NULL; p=next_node(t, p))
+	{
+		printf("%c ", p->data);
+	}
+	printf("\n");
+}
+
+*/
 
 
 

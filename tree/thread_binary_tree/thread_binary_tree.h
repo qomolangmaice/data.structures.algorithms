@@ -33,3 +33,24 @@ void create_bin_tree_(bin_tree *bt, bin_tree_node **t, char **str);
 
 void create_in_thread(bin_tree *bt);
 void create_in_thread_(bin_tree_node **t, bin_tree_node **pre);
+
+bin_tree_node* first_node(bin_tree *bt);
+bin_tree_node* first_node_(bin_tree_node *t);
+
+/*
+bin_tree_node* last_node(bin_tree *bt);
+bin_tree_node* last_node_(bin_tree_node *t);
+
+bin_tree_node* next_node(bin_tree *bt, bin_tree_node *cur);
+bin_tree_node* next_node_(bin_tree_node *t, bin_tree_node *cur);
+
+bin_tree_node* prio_node(bin_tree *bt, bin_tree_node *cur);
+bin_tree_node* prio_node_(bin_tree_node *t, bin_tree_node *cur);
+
+void in_order_visit(bin_tree *bt);
+void in_order_visit(bin_tree_node *t);
+*/
+
+
+
+
