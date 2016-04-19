@@ -46,6 +46,8 @@ This project is about data structure that contains sequence list, linked list, s
 
 --->[thread_binary_tree](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/tree/thread_binary_tree)
 
+--->[tree](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/tree/tree)
+
 
 ###Developping environment(in linux/windows/MacOS): 
 	sudo apt-get -y install gcc gdb make 
