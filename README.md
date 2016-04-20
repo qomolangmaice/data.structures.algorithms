@@ -48,6 +48,10 @@ This project is about data structure that contains sequence list, linked list, s
 
 --->[tree](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/tree/tree)
 
+--->[tree](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/tree/tree)
+
+####graph
+--->[graph_matrix](https://github.com/qomolangmaice/data.structures.algorithms/graph/master/graph/graph_matrix)
 
 ###Developping environment(in linux/windows/MacOS): 
 	sudo apt-get -y install gcc gdb make 
