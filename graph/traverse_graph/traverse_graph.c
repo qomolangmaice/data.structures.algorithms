@@ -317,6 +317,23 @@ void breadth_first_search(graph_link *gl, g_elem_type vertex)
 	free(visited_flag);
 }
 
+void components(graph_link *gl)
+{
+	int n_vertices = gl->num_vertices;
+	boolean *visited_flag = (boolean*)malloc(sizeof(boolean) * n_vertices);
+	assert(visited_flag != NULL);
+
+	for(int i=0; i<n_vertices; ++i)
+	{
+		visited_flag[i] = FALSE;
+	}
+ 	for(int i=0; i<n_vertices; ++i)
+	{
+		if(!visited_flag[i])
+			depth_first_search_(gl, i, visited_flag);
+	}
+	free(visited_flag);
+}
 
 
 

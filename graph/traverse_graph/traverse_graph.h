@@ -13,7 +13,7 @@
 #define TRUE 1
 #define FALSE 0
 
-#define default_vertex_size 10
+#define default_vertex_size 20
 
 typedef int boolean;
 typedef char g_elem_type;
@@ -52,3 +52,5 @@ void depth_first_search(graph_link *gl, g_elem_type vertex);
 void depth_first_search_(graph_link *gl, int vertex_pos, boolean visited_flag[]);
 
 void breadth_first_search(graph_link *gl, g_elem_type vertex);
+
+void components(graph_link *gl);
