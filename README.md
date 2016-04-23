@@ -61,7 +61,7 @@ This project is about data structure that contains sequence list, linked list, s
 	sudo apt-get -y install gcc g++ gdb make 
 
 ###insight download
---->[insight](ftp://sourceware.org/pub/insight/releases)
+--->[insight](https://www.sourceware.org/insight/downloads.php)
 
 ###insight install
 	tar xjvf insight-6.8-1.tar.bz2
