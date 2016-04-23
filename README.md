@@ -60,13 +60,21 @@ This project is about data structure that contains sequence list, linked list, s
 ###Developping environment(in linux/windows/MacOS): 
 	sudo apt-get -y install gcc gdb make 
 
+###insight
+	[insight](ftp://sourceware.org/pub/insight/releases)download
+	tar xjvf insight-6.8-1.tar.bz2
+	cd insight-6.8-1/
+ 	sudo ./configure --prefix=/usr/local 
+	sudo make 
+	sudo make install
+
 ###Compile:
 	make
 
 ###Compile and Debug:
 	make debug
 
-###Debug in GUI(Recommand using [insight](ftp://sourceware.org/pub/insight/releases) that is a very powerfull visual debugger):
+###Debug in GUI(Recommand using insight that is a very powerfull visual debugger):
 	make insight
 
 ###Count code lines:
