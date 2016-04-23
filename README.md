@@ -58,10 +58,11 @@ This project is about data structure that contains sequence list, linked list, s
 --->[traverse_graph](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/graph/traverse_graph)
 
 ###Developping environment(in linux/windows/MacOS): 
-	sudo apt-get -y install gcc gdb make 
+	sudo apt-get -y install gcc g++ gdb make 
 
 ###insight
 	[insight](ftp://sourceware.org/pub/insight/releases)download
+
 	tar xjvf insight-6.8-1.tar.bz2
 	cd insight-6.8-1/
  	sudo ./configure --prefix=/usr/local 
