@@ -42,9 +42,13 @@ int main()
 	printf("\n");
 	show_graph(&gl);
 
-	printf("Depth first search all nodes of the graph: \n");
+	printf("Depth First Search(DFS) all nodes of the graph: \n");
 	depth_first_search(&gl, 'A');
-	printf("\n");
+	printf("Nul\n");
+
+	printf("Breadth First Search(BFS) all nodes of the graph: \n");
+	breadth_first_search(&gl, 'A');
+	printf("Nul\n");
 
 	//int v = get_first_neighbor(&gl, 'A');
 	//printf("The first neighbor node of 'A' is: %d\n", v);

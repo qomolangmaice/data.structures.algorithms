@@ -6,6 +6,8 @@
  *  Created: 2016.04.21 20:38:27
  */
 #include "traverse_graph.h"
+#include "link_queue/link_queue.h"
+#include "link_queue/link_queue.c"
 
 void init_graph(graph_link *gl)
 {
@@ -20,7 +22,7 @@ void init_graph(graph_link *gl)
 	}
 }
 
-int get_vertex_pos(graph_link *gl, elem_type v)
+int get_vertex_pos(graph_link *gl, g_elem_type v)
 {
 	for(int i=0; i<gl->num_vertices; ++i)
 	{
@@ -30,7 +32,7 @@ int get_vertex_pos(graph_link *gl, elem_type v)
 	return -1;
 }
 
-void insert_vertex(graph_link *gl, elem_type v)
+void insert_vertex(graph_link *gl, g_elem_type v)
 {
 	if(gl->num_vertices >= gl->max_vertices)
 		return;
@@ -54,7 +56,7 @@ void show_graph(graph_link *gl)
 	printf("\n");
 }
 
-void insert_edge(graph_link *gl, elem_type vertex1, elem_type vertex2)
+void insert_edge(graph_link *gl, g_elem_type vertex1, g_elem_type vertex2)
 {
  	int v1 = get_vertex_pos(gl, vertex1);
 	int v2 = get_vertex_pos(gl, vertex2);
@@ -78,7 +80,7 @@ void insert_edge(graph_link *gl, elem_type vertex1, elem_type vertex2)
 	gl->num_edges++;
 }
 
-void delete_edge(graph_link *gl, elem_type vertex1, elem_type vertex2)
+void delete_edge(graph_link *gl, g_elem_type vertex1, g_elem_type vertex2)
 {
 	int v1 = get_vertex_pos(gl, vertex1);
 	int v2 = get_vertex_pos(gl, vertex2);
@@ -126,7 +128,7 @@ void delete_edge(graph_link *gl, elem_type vertex1, elem_type vertex2)
 	free(p);
 }
 
-void delete_vertex(graph_link *gl, elem_type vertex)
+void delete_vertex(graph_link *gl, g_elem_type vertex)
 {
 	int v = get_vertex_pos(gl, vertex);
 	 
@@ -202,7 +204,7 @@ void destroy_graph(graph_link *gl)
 	gl->max_vertices = gl->num_edges = gl->num_vertices = 0;
 }
 
-int get_first_neighbor(graph_link *gl, elem_type vertex)
+int get_first_neighbor(graph_link *gl, g_elem_type vertex)
 {
 	int v = get_vertex_pos(gl, vertex);
 	if(v == -1)
@@ -214,7 +216,7 @@ int get_first_neighbor(graph_link *gl, elem_type vertex)
 	return -1;
 }
 
-int get_next_neighbor(graph_link *gl, elem_type vertex1, elem_type vertex2)
+int get_next_neighbor(graph_link *gl, g_elem_type vertex1, g_elem_type vertex2)
 {
 	int v1 = get_vertex_pos(gl, vertex1);
 	int v2 = get_vertex_pos(gl, vertex2);
@@ -230,18 +232,20 @@ int get_next_neighbor(graph_link *gl, elem_type vertex1, elem_type vertex2)
 	return -1;
 }
 
-elem_type get_vertex_value(graph_link *gl, int vertex_pos)
+g_elem_type get_vertex_value(graph_link *gl, int vertex_pos)
 {
 	if(vertex_pos == -1)
 		return 0;
 	return gl->node_table[vertex_pos].data;
 }
 
-void depth_first_search(graph_link *gl, elem_type vertex)
+void depth_first_search(graph_link *gl, g_elem_type vertex)
 {
 	int n_vertices = gl->num_vertices;
-	boolean *visited_flag = (int*)malloc(sizeof(int) * n_vertices);
+	boolean *visited_flag = (boolean*)malloc(sizeof(int) * n_vertices);
 	assert(visited_flag != NULL);
+
+	/* intial all visited_flag of all nodes to FALSE(0) */
 	for(int i=0; i<n_vertices; ++i)
 	{
 		visited_flag[i] = FALSE;
@@ -270,6 +274,48 @@ void depth_first_search_(graph_link *gl, int vertex_pos, boolean visited_flag[])
 	}
 }
 
+void breadth_first_search(graph_link *gl, g_elem_type vertex)
+{
+	int n_vertices = gl->num_vertices;
+	boolean *visited_flag = (boolean*)malloc(sizeof(boolean) * n_vertices);
+	assert(visited_flag != NULL);
+
+	/* intial all visited_flag of all nodes to FALSE(0) */
+	for(int i=0; i<n_vertices; ++i)
+	{
+		visited_flag[i] = FALSE;
+	}
+
+	int vertex_pos = get_vertex_pos(gl, vertex);
+	printf("%c-->", vertex);
+	visited_flag[vertex_pos] = TRUE;
+
+	link_queue queue;
+	init_queue(&queue);
+
+	int first_neighbor_pos;
+	en_queue(&queue, vertex_pos);
+	while(!queue_is_empty(&queue))
+	{
+ 	 	get_queue_head(&queue, &vertex_pos);		
+		de_queue(&queue);
+
+		first_neighbor_pos = get_first_neighbor(gl, get_vertex_value(gl, vertex_pos));
+		while(first_neighbor_pos != -1)
+		{
+			if(!visited_flag[first_neighbor_pos])
+			{
+				printf("%c-->", get_vertex_value(gl, first_neighbor_pos));
+				visited_flag[first_neighbor_pos] = TRUE;
+				en_queue(&queue, first_neighbor_pos);
+			}
+			first_neighbor_pos = get_next_neighbor(gl, 
+					 	 	 	 	 	 	 	   get_vertex_value(gl, vertex_pos),
+												   get_vertex_value(gl, first_neighbor_pos));
+		}
+	}
+	free(visited_flag);
+}
 
 
 
