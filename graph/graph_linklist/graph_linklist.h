@@ -41,9 +41,6 @@ void delete_edge(graph_link *gl, elem_type vertex1, elem_type vertex2);
 void delete_vertex(graph_link *gl, elem_type vertex);
 void destroy_graph(graph_link *gl);
 int get_first_neighbor(graph_link *gl, elem_type vertex);
-int get_next_neighbor(graph_link *g, elem_type vertex1, elem_type vertex2);
-
-
-
+int get_next_neighbor(graph_link *gl, elem_type vertex1, elem_type vertex2);
 
 
