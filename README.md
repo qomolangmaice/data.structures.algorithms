@@ -55,6 +55,8 @@ This project is about data structure that contains sequence list, linked list, s
 
 --->[graph_linklist](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/graph/graph_linklist)
 
+--->[traverse_graph](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/graph/traverse_graph)
+
 ###Developping environment(in linux/windows/MacOS): 
 	sudo apt-get -y install gcc gdb make 
 
@@ -63,6 +65,9 @@ This project is about data structure that contains sequence list, linked list, s
 
 ###Compile and Debug:
 	make debug
+
+###Debug in GUI(Recommand using [insight](ftp://sourceware.org/pub/insight/releases) that is a very powerfull visual debugger):
+	make insight
 
 ###Count code lines:
 	make count
