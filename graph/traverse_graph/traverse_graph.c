@@ -268,9 +268,7 @@ void depth_first_search_(graph_link *gl, int vertex_pos, boolean visited_flag[])
 		{
 			depth_first_search_(gl, first_neighbor_pos, visited_flag);
 		}
-		first_neighbor_pos = get_next_neighbor(gl, 
-				 	 	 	 	 	 	 	   get_vertex_value(gl, vertex_pos), 
-											   get_vertex_value(gl, first_neighbor_pos));
+		first_neighbor_pos = get_next_neighbor(gl, get_vertex_value(gl, vertex_pos), get_vertex_value(gl, first_neighbor_pos));
 	}
 }
 
@@ -309,9 +307,7 @@ void breadth_first_search(graph_link *gl, g_elem_type vertex)
 				visited_flag[first_neighbor_pos] = TRUE;
 				en_queue(&queue, first_neighbor_pos);
 			}
-			first_neighbor_pos = get_next_neighbor(gl, 
-					 	 	 	 	 	 	 	   get_vertex_value(gl, vertex_pos),
-												   get_vertex_value(gl, first_neighbor_pos));
+			first_neighbor_pos = get_next_neighbor(gl, get_vertex_value(gl, vertex_pos), get_vertex_value(gl, first_neighbor_pos));
 		}
 	}
 	free(visited_flag);
