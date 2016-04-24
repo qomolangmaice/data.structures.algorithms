@@ -6,8 +6,8 @@
  *  Created: 2016.04.24 19:02:15
  */
 
-#include "sequential_search.h"
-#include "sequential_search.c"
+#include "seq_search_and_bin_search.h"
+#include "seq_search_and_bin_search.c"
 
 void main()
 {

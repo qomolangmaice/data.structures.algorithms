@@ -54,7 +54,7 @@ void sequential_search(seq_table *st, elem_type key)
  * 在有序表st中折半查找关键字是否等于key,
  * 若找到，则函数值为该元素在表中的位置，否则为0
  */
-int binary_search(seq_table *st, elem_type key)
+void binary_search(seq_table *st, elem_type key)
 {
 	int low, high, mid;
 	low = 1; 	/*置区间初值 */
@@ -66,14 +66,13 @@ int binary_search(seq_table *st, elem_type key)
 		{
 			//return mid;
 			printf("Binary search - Found key: %d\n", st->base[mid]);
-			return mid;
+			return;
 		}
 		else if(key < st->base[mid])
 			high = mid - 1;
 		else
 			low = mid + 1;
 	}
-	return 0;
 }
 
 void destroy_seq_table(seq_table *st)

@@ -21,5 +21,5 @@ void init_seq_table(seq_table *st);
 void create_seq_table(seq_table *st);
 void show_seq_table(seq_table *st);
 void sequential_search(seq_table *st, elem_type key);
-int binary_search(seq_table *st, elem_type key);
+void binary_search(seq_table *st, elem_type key);
 void destroy_seq_table(seq_table *st);
