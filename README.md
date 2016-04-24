@@ -63,6 +63,7 @@ This project is about data structure that contains sequence list, linked list, s
 
 ####algorithms
 --->[search](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/algorithms/search)
+
 	--->[sequential_search](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/algorithms/search/sequential_search)
 
 ###Developping environment(in linux/windows/MacOS): 
