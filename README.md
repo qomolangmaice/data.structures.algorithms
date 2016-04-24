@@ -57,6 +57,8 @@ This project is about data structure that contains sequence list, linked list, s
 
 --->[traverse_graph](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/graph/traverse_graph)
 
+--->[minimum_cost_spanning_tree-PrimAlgorithm](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/graph/minimum_cost_spanning_tree-PrimAlgorithm)
+
 ###Developping environment(in linux/windows/MacOS): 
 	sudo apt-get -y install gcc g++ gdb make 
 
