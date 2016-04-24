@@ -20,5 +20,9 @@ void main()
 	show_seq_table(&st);
 
 	sequential_search(&st, 3);
+
+	binary_search(&st, 2);
 	//sequential_search(&st, 6);
+	//
+	destroy_seq_table(&st);
 }

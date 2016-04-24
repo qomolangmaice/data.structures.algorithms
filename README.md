@@ -62,7 +62,7 @@ This project is about data structure that contains sequence list, linked list, s
 --->[shortest_path-DijkstraAlgorithm](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/graph/shortest_path-DijkstraAlgorithm)
 
 ####algorithms
---->[sequential_search](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/algorithms/search/sequential_search)
+--->[sequential_search_and_binary_search](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/algorithms/search/sequential_search_and_binary_search)
 
 ###Developping environment(in linux/windows/MacOS): 
 	sudo apt-get -y install gcc g++ gdb make 
