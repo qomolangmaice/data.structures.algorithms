@@ -59,6 +59,8 @@ This project is about data structure that contains sequence list, linked list, s
 
 --->[minimum_cost_spanning_tree-PrimAlgorithm](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/graph/minimum_cost_spanning_tree-PrimAlgorithm)
 
+--->[shortest_path-DijkstraAlgorithm](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/graph/shortest_path-DijkstraAlgorithm)
+
 ###Developping environment(in linux/windows/MacOS): 
 	sudo apt-get -y install gcc g++ gdb make 
 
