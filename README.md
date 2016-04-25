@@ -64,6 +64,8 @@ This project is about data structure that contains sequence list, linked list, s
 ####algorithms
 --->[sequential_search_and_binary_search](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/algorithms/search/sequential_search_and_binary_search)
 
+--->[binary_sort_tree](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/algorithms/search/binary_sort_tree)
+
 ###Developping environment(in linux/windows/MacOS): 
 	sudo apt-get -y install gcc g++ gdb make 
 
