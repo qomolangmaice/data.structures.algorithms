@@ -83,8 +83,8 @@ boolean insert_AVL_tree_(AVL_node **t, elem_type value)
 			{
 				if(flag == -1) 	/* 左高右低,左旋转 */
 					rotate_right(&parent);
-				//else 	 	 	/* 左低右高,右旋转 */
-				//	rotate_left(&parent);
+				else 	 	 	/* 左低右高,右旋转 */
+					rotate_left(&parent);
 			}
 			//else  	/* 双旋转 */
 			//{
@@ -118,7 +118,25 @@ void rotate_right(AVL_node **ptr)
 	(*ptr)->right_child = sub_right;
 	(*ptr)->bf = sub_right->bf = 0;
 }
-//void rotate_left(AVL_node **ptr)
+void rotate_left(AVL_node **ptr)
+{
+	AVL_node *sub_left = *ptr;
+	*ptr = sub_left->right_child;
+	sub_left->right_child = (*ptr)->left_child;
+	(*ptr)->left_child = sub_left;
+	(*ptr)->bf = sub_left->bf = 0;
+}
 //void rotate_left_right(AVL_node **ptr)
 //void rotate_right_left(AVL_node **ptr)
+
+
+
+
+
+
+
+
+
+
+
 

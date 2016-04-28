@@ -9,8 +9,10 @@
 
 void main()
 {
-	//elem_type array[] = {13, 24, 20, 37, 90, 53};
-	elem_type array[] = {30, 20, 10};
+	//elem_type array[] = {13, 24, 20, 37, 90, 53}; 	/* ---> test for non rotate algorithm */
+	//elem_type array[] = {30, 20, 10}; 	/* ---> test for rotate_right() */
+	//elem_type array[] = {30, 20, 40, 10, 25, 5}; 	/* ---> test for rotate_right() */
+	elem_type array[] = {10, 20, 30}; 	/* ---> test for rotate_left() */
 	int n_array = sizeof(array) / sizeof(elem_type);
 
 	AVL_tree avl;
