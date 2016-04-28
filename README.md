@@ -66,6 +66,8 @@ This project is about data structure that contains sequence list, linked list, s
 
 --->[binary_sort_tree](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/algorithms/search/binary_sort_tree)
 
+--->[AVL_tree](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/algorithms/search/AVL_tree)
+
 ###Developping environment(in linux/windows/MacOS): 
 	sudo apt-get -y install gcc g++ gdb make 
 
