@@ -37,3 +37,5 @@ void rotate_left(AVL_node **ptr);
 void rotate_left_right(AVL_node **ptr); 	/* 先左旋转后右旋转 */
 void rotate_right_left(AVL_node **ptr); 	/* 先右旋转后左旋转 */
 
+boolean delete_AVL_tree(AVL_tree *avl, elem_type key);
+boolean delete_AVL_tree_(AVL_node **t, elem_type key);
