@@ -68,6 +68,8 @@ This project is about data structure that contains sequence list, linked list, s
 
 --->[AVL_tree](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/algorithms/search/AVL_tree)
 
+--->[hash_table](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/algorithms/search/hash_table)
+
 ###Developping environment(in linux/windows/MacOS): 
 	sudo apt-get -y install gcc g++ gdb make 
 
