@@ -34,6 +34,6 @@ boolean insert_AVL_tree_(AVL_node **t, elem_type value);
 
 void rotate_right(AVL_node **ptr);
 void rotate_left(AVL_node **ptr);
-void rotate_left_right(AVL_node **ptr);
-void rotate_right_left(AVL_node **ptr);
+void rotate_left_right(AVL_node **ptr); 	/* 先左旋转后右旋转 */
+void rotate_right_left(AVL_node **ptr); 	/* 先右旋转后左旋转 */
 

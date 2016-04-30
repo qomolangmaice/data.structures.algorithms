@@ -62,7 +62,7 @@ boolean insert_AVL_tree_(AVL_node **t, elem_type value)
 	else
 		parent->right_child = p;
 
-	/* 调整bf */
+	/* 调整平衡因子bf */
 	while(!stack_is_empty(&stack))
 	{
 		parent = get_stack_top(&stack);
@@ -86,13 +86,14 @@ boolean insert_AVL_tree_(AVL_node **t, elem_type value)
 				else 	 	 	/* 左低右高,右旋转 */
 					rotate_left(&parent);
 			}
-			//else  	/* 双旋转 */
-			//{
-			//	if(flag == 1)
-			//		rotate_right_left(&parent); 	 	/* 双旋转，先右旋转后左旋转 */
-			//	else
-			//		rotate_left_right(&parent); 	 	/* 双旋转, 先左旋转后右旋转 */
-			//}
+			else  	/* 双旋转 */
+			{
+				if(flag == 1)
+					rotate_right_left(&parent); 	 	/* 双旋转，先右旋转后左旋转 */
+				else
+					rotate_left_right(&parent); 	 	/* 双旋转, 先左旋转后右旋转 */
+			}
+			break; 	/* 进行旋转化的平衡调整后，平衡因子已经调整好了，不需要再根据stack栈空不空再重新调整平衡因子 */
 		} /* else */
 	} /* while */
 
@@ -118,6 +119,7 @@ void rotate_right(AVL_node **ptr)
 	(*ptr)->right_child = sub_right;
 	(*ptr)->bf = sub_right->bf = 0;
 }
+
 void rotate_left(AVL_node **ptr)
 {
 	AVL_node *sub_left = *ptr;
@@ -126,17 +128,54 @@ void rotate_left(AVL_node **ptr)
 	(*ptr)->left_child = sub_left;
 	(*ptr)->bf = sub_left->bf = 0;
 }
-//void rotate_left_right(AVL_node **ptr)
-//void rotate_right_left(AVL_node **ptr)
 
+void rotate_left_right(AVL_node **ptr) 	/* 双旋转，先左旋转后右旋转 */
+{
+	AVL_node *sub_right = *ptr;
+	AVL_node *sub_left = sub_right->left_child;
+	*ptr = sub_left->right_child;
 
+	/* 左旋转 */
+	sub_left->right_child = (*ptr)->left_child;
+	(*ptr)->left_child = sub_left;
+	if((*ptr)->bf <= 0)
+		sub_left->bf = 0;
+	else
+		sub_left->bf = -1;
 
+	/* 右旋转 */
+	sub_right->left_child = (*ptr)->right_child;
+	(*ptr)->right_child = sub_right;
+	if((*ptr)->bf == -1)
+		sub_right->bf = 1;
+	else
+		sub_right->bf = 0;
+	(*ptr)->bf = 0;
+}
 
+void rotate_right_left(AVL_node **ptr) 	/* 双旋转，先右旋转左旋转 */
 
+{
+	AVL_node *sub_left = *ptr;
+	AVL_node *sub_right = (*ptr)->right_child;
+	(*ptr) = sub_right->left_child;
 
+	/* 右旋转 */
+	sub_right->left_child = (*ptr)->right_child;
+	(*ptr)->right_child = sub_right;
+	if((*ptr)->bf >= 0)
+		sub_right->bf = 0;
+	else
+		sub_right->bf = 1;
 
-
-
-
+	/* 左旋转 */
+	sub_left->right_child = (*ptr)->left_child;
+	(*ptr)->left_child = sub_left;
+	if((*ptr)->bf == 1)
+		sub_left->bf = -1;
+	else
+		sub_left->bf = 0;
+	(*ptr)->bf = 0;
+}
 
 
