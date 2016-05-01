@@ -70,6 +70,8 @@ This project is about data structure that contains sequence list, linked list, s
 
 --->[hash_table](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/algorithms/search/hash_table)
 
+--->[sort:straight_insert_sort, binary_insert_sort](https://github.com/qomolangmaice/data.structures.algorithms/tree/master/algorithms/sort)
+
 ###Developping environment(in linux/windows/MacOS): 
 	sudo apt-get -y install gcc g++ gdb make 
 
