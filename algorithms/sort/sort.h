@@ -12,7 +12,10 @@
 typedef int elem_type;
 #define MAXSIZE 20
 
-typedef elem_type array[MAXSIZE];
+typedef elem_type seq_list[MAXSIZE];
 
 /* 直接插入排序 */
-void straight_insert_sort(array *a, int n);
+void straight_insert_sort(seq_list *list, int n);
+
+/* 折半插入排序 */
+void binary_insert_sort(seq_list *list, int n);
