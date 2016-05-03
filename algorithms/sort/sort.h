@@ -24,17 +24,26 @@ typedef struct sl_node{
 typedef sl_node table[MAXSIZE];
 /**************表插入排序数据结构*******************/
 
-/* 直接插入排序 */
+/* 插入排序--直接插入排序 */
 void straight_insert_sort(seq_list *list, int n);
 
-/* 折半插入排序 */
+/* 插入排序--折半插入排序 */
 void binary_insert_sort(seq_list *list, int n);
 
-/* 2-路插入排序 */
+/* 插入排序--2-路插入排序 */
 void two_way_insert_sort(seq_list *list, int n);
 
-/* 表插入排序 */
+/* 插入排序--表插入排序 */
 void table_insert_sort(table *tb, int n);
 
-/* 希尔排序 */
+/* 插入排序--希尔排序 */
 void shell_sort(seq_list *list, int n, int dlta[], int t);
+
+/* 交换排序--冒泡排序 */
+void bubble_sort(seq_list *list, int n);
+
+/* 交换排序--快速排序 */
+void quick_sort(seq_list *list, int low, int high);
+
+/* 选择排序--简单选择排序 */
+void simple_select_sort(seq_list *list, int n);

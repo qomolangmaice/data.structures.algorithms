@@ -145,12 +145,78 @@ void shell_sort(seq_list *list, int n, int dlta[], int t) 	/* t为排序趟数 *
 	}
 }
 
+/* 冒泡排序 */
+void bubble_sort(seq_list *list, int n)
+{
+	for(int i=0; i<n-1; ++i)
+	{
+		for(int j=0; j<n-i-1; ++j)
+		{
+			if((*list)[j] > (*list)[j+1])
+				swap(&((*list)[j]), &((*list)[j+1]));
+		}
+	}
+}
 
 
+/*********************** 快速排序 *********************/
+int partition(seq_list *list, int low, int high) 	/* 求枢轴关键字,来区分排序低区和高区 */
+{
+	elem_type pivot_key = (*list)[low];
+	while(low < high)
+	{
+		while(low < high && (*list)[high] >= pivot_key)
+			high--;
+		(*list)[low] = (*list)[high];
+
+		while(low < high && (*list)[low] < pivot_key)
+			low++;
+		(*list)[high] = (*list)[low];
+	}
+	(*list)[low] = pivot_key;
+	return low;
+}
+
+void quick_sort(seq_list *list, int low, int high)
+{
+	if(low < high)
+	{
+		/* 取枢轴位置 -- 即排序低区和高区的划分点*/
+		int pivot_location = partition(list, low, high);
+		quick_sort(list, low, pivot_location - 1);
+		quick_sort(list, pivot_location + 1, high);
+	}
+}
+/*********************** 快速排序 *********************/
 
 
+/********************* 简单选择排序 *******************/
+int select_min_key(seq_list *list, int k, int n)
+{
+	elem_type min_value = (*list)[k];
+	int pos = k;
 
-
-
+	for(int i=k+1; i<n; ++i)
+	{
+		if((*list)[i] < min_value)
+		{
+			min_value = (*list)[i];
+			pos = i;
+		}
+	}
+	return pos;
+}
+void simple_select_sort(seq_list *list, int n)
+{
+	for(int i=0; i<n-1; ++i)
+	{
+		int j = select_min_key(list, i, n);
+		if(j != i)
+		{
+			swap(&((*list)[j]), &((*list)[i]));
+		}
+	}
+}
+/********************* 简单选择排序 *******************/
 
 
