@@ -47,3 +47,6 @@ void quick_sort(seq_list *list, int low, int high);
 
 /* 选择排序--简单选择排序 */
 void simple_select_sort(seq_list *list, int n);
+
+/* 选择排序--树形选择排序 */
+void tree_select_sort(seq_list *list, int n);

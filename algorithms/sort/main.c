@@ -68,8 +68,12 @@ void main()
 	//quick_sort(&list, low, high);
 	
 	/* 简单选择排序 */
-	printf("简单选择排序:\n");
-	simple_select_sort(&list, 9);
+	//printf("简单选择排序:\n");
+	//simple_select_sort(&list, 9);
+
+	/* 树形选择排序 */
+	printf("树形选择排序:\n");
+	tree_select_sort(&list, 9);
 
 #ifdef USE_ZERO_SPACE
 	for(int i=1; i<9; ++i)

@@ -219,4 +219,108 @@ void simple_select_sort(seq_list *list, int n)
 }
 /********************* 简单选择排序 *******************/
 
+/********************* 树形选择排序 *******************/
+elem_type get_value(elem_type value[], int size, int current_pos)
+{
+	if(current_pos >= size)
+		return MAXVALUE;
+	elem_type val;
+	if(current_pos < size / 2)
+	{
+		val = value[value[current_pos]];
+	}
+	else
+	{
+		val = value[current_pos];
+	}
+	return val;
+}
+void left_play_right(elem_type value[], int size, int current_pos)
+{
+	int left, right;
+	int left_value, right_value;
+	while(current_pos >= 0 )
+	{
+		left = 2 * current_pos + 1;
+		right = 2 * current_pos + 2;
+		left_value = get_value(value, size, left);
+		right_value = get_value(value, size, right);
+		if(left_value <= right_value)
+		{
+			if(left < size / 2)
+				value[current_pos] = value[left];
+			else
+				value[current_pos] = left;
+		}
+		else
+		{
+			if(right < size / 2)
+				value[current_pos] = value[right];
+			else
+				value[current_pos] = right;
+		}
+		--current_pos;
+	}
+}
+void select(elem_type value[], int size, int current_pos)
+{
+	int i = current_pos; 	/* parent */
+	int j = 2 * current_pos + 1; 	/* leftchild */
+	elem_type left_value, right_value;
+	int flag = -1;
+	while(flag && i >= 0)
+	{
+		left_value = get_value(value, size, j);
+		right_value = get_value(value, size, j+1);
+		if(left_value <= right_value)
+		{
+			if(j < size / 2)
+				value[i] = value[j];
+			else
+				value[i] = j;
+		}
+		else
+		{
+			if(j + 1 < size / 2)
+				value[i] = value[j + 1];
+			else
+				value[i] = j + 1;
+		}
+		if(i == 0)
+			flag++;
+		i = (i - 1) / 2;
+		j = 2 * i + 1;
+	}
+}
+void tree_select_sort(seq_list *list, int n)
+{
+ 	int size = 2 * n - 1;
+	/* 开辟一个value数组空间 */
+	elem_type *value = (elem_type*)malloc(sizeof(elem_type) * size);
+	assert(value != NULL);
+
+	int start_index = size / 2;
+	int i=0;
+	for(i=0; i<n; ++i)
+	{
+		value[start_index++] = (*list)[i];
+	}
+	int current_pos = size / 2 - 1;
+	left_play_right(value, size, current_pos);
+	i = 0;
+	(*list)[i] = value[value[0]];
+
+	value[value[0]] = MAXVALUE;
+	for(int i=1; i<n; ++i)
+	{
+		current_pos = (value[0] - 1) / 2;
+		select(value, size, current_pos);
+		(*list)[i] = value[value[0]];
+		value[value[0]] = MAXVALUE;
+	}
+	free(value);
+	value = NULL;
+}
+/********************* 树形选择排序 *******************/
+
 
