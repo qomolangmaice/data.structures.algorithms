@@ -323,4 +323,104 @@ void tree_select_sort(seq_list *list, int n)
 }
 /********************* 树形选择排序 *******************/
 
+/*********************** 堆排序 ***********************/
+void sift_down(elem_type heap[], int n, int current_pos)
+{
+	int i = current_pos;
+	int j = 2 * i + 1;
+	while(j < n)
+	{
+		if(j < n - 1 && heap[j] > heap[j + 1])
+			j++;
+		if(heap[i] <= heap[j])
+			break;
+		else
+		{
+			swap(&(heap[i]), &(heap[j]));
+			i = j;
+			j = 2 * i + 1;
+		}
+	}
+}
+
+elem_type remove_min_key(elem_type heap[], int n)
+{
+	elem_type key = heap[0];
+	heap[0] = heap[n];
+	sift_down(heap, n, 0);
+	return key;
+}
+void heap_sort(seq_list *list, int n)
+{
+	elem_type *heap = (elem_type *)malloc(sizeof(elem_type) * n);
+	assert(heap != NULL);
+	for(int i=0; i<n; ++i)
+	{
+		heap[i] = (*list)[i];
+	}
+
+	int current_pos = n / 2 - 1;
+	while(current_pos >= 0)
+	{
+		sift_down(heap, n, current_pos);
+		current_pos--;
+	}
+	for(int i=0; i<n; ++i)
+	{
+		(*list)[i] = remove_min_key(heap, n-i-1);
+	}
+	free(heap);
+	heap = NULL;
+}
+/*********************** 堆排序 ***********************/
+
+/********************** 归并排序 **********************/
+void merge(seq_list *list, seq_list *tmp_list, int left, int mid, int right) 
+{
+	for(int i=left; i<=right; ++i)
+	{
+		(*tmp_list)[i] = (*list)[i];
+	}
+	int s1 = left; 
+	int s2 = mid + 1;
+	int k = left;
+	while(s1 <= mid && s2 <= right)
+	{
+		if((*tmp_list)[s1] <= (*tmp_list)[s2])
+			(*list)[k++] = (*tmp_list)[s1++];
+		else
+			(*list)[k++] = (*tmp_list)[s2++];
+	}
+	while(s1 <= mid)
+	{
+		(*list)[k++] = (*tmp_list)[s1++];
+	}
+	while(s2 <= right)
+	{
+		(*list)[k++] = (*tmp_list)[s2++];
+	}
+}
+void merge_sort(seq_list *list, seq_list *tmp_list, int left, int right)
+{
+	if(left >= right)
+		return;
+	int mid = (left + right) / 2;
+	merge_sort(list, tmp_list, left, mid);
+	merge_sort(list, tmp_list, mid + 1, right);
+	merge(list, tmp_list, left, mid, right);
+}
+/********************** 归并排序 **********************/
+
+
+
+
+
+
+
+
+
+
+
+
+
 

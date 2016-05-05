@@ -50,3 +50,9 @@ void simple_select_sort(seq_list *list, int n);
 
 /* 选择排序--树形选择排序 */
 void tree_select_sort(seq_list *list, int n);
+
+/* 堆排序 */
+void heap_sort(seq_list *list, int n);
+
+/* 归并排序 */
+void merge_sort(seq_list *list, seq_list *tmp_list, int left, int right);

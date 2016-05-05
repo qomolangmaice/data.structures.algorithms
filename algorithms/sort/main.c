@@ -72,8 +72,17 @@ void main()
 	//simple_select_sort(&list, 9);
 
 	/* 树形选择排序 */
-	printf("树形选择排序:\n");
-	tree_select_sort(&list, 9);
+	//printf("树形选择排序:\n");
+	//tree_select_sort(&list, 9);
+	
+	/* 堆排序 */
+	//printf("堆排序:\n");
+	//heap_sort(&list, 9);
+	
+	/* 归并排序 */
+	printf("归并排序:\n");
+	seq_list temp_list;
+	merge_sort(&list, &temp_list, 0, 8);
 
 #ifdef USE_ZERO_SPACE
 	for(int i=1; i<9; ++i)
