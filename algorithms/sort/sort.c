@@ -6,6 +6,8 @@
  *  Created: 2016.05.01 22:51:51
  */
 #include "sort.h"
+#include "link_list/link_list.h"
+#include "link_list/link_list.c"
 
 void swap(elem_type *a, elem_type *b)
 {
@@ -412,15 +414,54 @@ void merge_sort(seq_list *list, seq_list *tmp_list, int left, int right)
 /********************** 归并排序 **********************/
 
 
+/* 基数排序函数无法正确运行 */
+/********************** 基数排序 **********************/
+//int get_key(elem_type value, int k)
+//{
+//	int key;
+//	while(k > 0)
+//	{
+//		key = value % 10;
+//		value /= 10;
+//		k--;
+//	}
+//	return key;
+//}
+//void distribute(seq_list *list, int n, link_list (&single_link_list)[10], int k)
+//{
+//	int key;
+//	for(int i=0; i<n; ++i )
+//	{
+//		key = get_key((*list)[i], k);
+//		push_back(&single_link_list[key], (*list)[i]);
+//	}
+//}
+//void collect(seq_list *list, link_list (&single_link_list)[10])
+//{
+//	int k = 0;
+//	for(int i=0; i<10; ++i)
+//	{
+//		node *p = single_link_list[i].head->next;
+//		while(p != NULL)
+//		{
+//			(*list)[k++] = p->data;
+//		}
+//	}
+//}
+//void radix_sort(seq_list *list, int n)
+//{
+// 	link_list single_link_list[10];
+//	for(int i=0; i<10; ++i)
+//		init_list(&single_link_list[i]);
+//	
+//	for(int i=0; i<3; ++i)
+//	{
+//		distribute(list, n, single_link_list, i);
+//		collect(list, single_link_list);
+//	}
+//}
 
-
-
-
-
-
-
-
-
+/********************** 基数排序 **********************/
 
 
 

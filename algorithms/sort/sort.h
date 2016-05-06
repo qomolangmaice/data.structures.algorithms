@@ -56,3 +56,6 @@ void heap_sort(seq_list *list, int n);
 
 /* 归并排序 */
 void merge_sort(seq_list *list, seq_list *tmp_list, int left, int right);
+
+/* 基数排序 */
+void radix_sort(seq_list *list, int n);

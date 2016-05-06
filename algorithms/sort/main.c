@@ -10,6 +10,7 @@
 #define USE_ZERO_SPACE
 
 void main()
+//int main()
 {
 	/* seq_list是一种数组指针类型，list是一个数组指针变量 */
  	//seq_list list = {49, 38, 65, 97, 76, 13, 27, 49};	 	/* 直接插入排序测试 */
@@ -83,6 +84,17 @@ void main()
 	printf("归并排序:\n");
 	seq_list temp_list;
 	merge_sort(&list, &temp_list, 0, 8);
+	
+	/* 基数排序 */
+	//seq_list list_a = {278, 109, 63, 930, 589, 184, 505, 269, 8, 83};
+	//radix_sort(&list_a, 10);
+
+	//for(int i=0; i<8; ++i)
+    //{
+    //	printf("%d ", list_a[i]);
+    //}
+    //printf("\n");
+
 
 #ifdef USE_ZERO_SPACE
 	for(int i=1; i<9; ++i)

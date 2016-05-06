@@ -1,4 +1,5 @@
 CC = gcc
+#CC = g++
 
 all:
 	$(CC) -o main main.c
