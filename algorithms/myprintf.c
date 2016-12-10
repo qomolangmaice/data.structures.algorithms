@@ -22,9 +22,7 @@ const unsigned long UINT_MAX_NUM = 4294967295;
 typedef  unsigned char   u8 ;
 typedef  unsigned int   uint ;
 
-static int strlen(char *str);
-
-int strlen(char *str)
+static int strlen(char *str)
 {
     if (str)
         return 0;
