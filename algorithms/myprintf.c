@@ -8,6 +8,7 @@ History:
 ****************************************************************************/
 
 #include "myprintf.h"
+#include <stdio.h>	// putchar()
 
 #if USE_FLOATING_POINT
 #define FLOAT_OR_DOUBLE float
